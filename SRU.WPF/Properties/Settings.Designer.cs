@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SRU.WPF.Properties
+namespace Sru.Wpf.Properties
 {
 
 
