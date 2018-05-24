@@ -21,5 +21,16 @@ namespace Sru.Core
                 }
             }
         }
+
+        public static void EjectRemovableDevices()
+        {
+            VolumeDeviceClass volumes = new VolumeDeviceClass();
+            foreach (Volume vol in volumes.Devices)
+            {
+                if (vol.IsUsb && vol.RemovableDevices.Count > 0) { 
+                    vol.Eject(false);
+                }
+            }
+        }
     }
 }

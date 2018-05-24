@@ -61,6 +61,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         internal static string Exit {
@@ -79,7 +88,16 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Safeley Remove USB.
+        ///   Looks up a localized string similar to Hide options window.
+        /// </summary>
+        internal static string HideWindow {
+            get {
+                return ResourceManager.GetString("HideWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double-click for options, right-click for menu.
         /// </summary>
         internal static string NotificationToolTip {
             get {
@@ -97,16 +115,16 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove.
+        ///   Looks up a localized string similar to Safely remove device.
         /// </summary>
-        internal static string Remove {
+        internal static string RemoveDevice {
             get {
-                return ResourceManager.GetString("Remove", resourceCulture);
+                return ResourceManager.GetString("RemoveDevice", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show SRU Window.
+        ///   Looks up a localized string similar to Show options window.
         /// </summary>
         internal static string ShowWindow {
             get {
