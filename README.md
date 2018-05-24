@@ -8,7 +8,7 @@
  
  ## Libraries and Integrated code:
 
-* [NotifyIcon WPF](https://bitbucket.org/hardcodet/notifyicon-wpf/src : New BSD License (BSD) (thanks to **Adolfo Marinucci**)
+* [NotifyIcon WPF](https://bitbucket.org/hardcodet/notifyicon-wpf/src)
 * [Eject USB disks using C#](https://www.codeproject.com/Articles/13530/Eject-USB-disks-using-C)
 
 ## Reusable Librarie(s) (Part of SRU):
