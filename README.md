@@ -6,6 +6,16 @@
  - Windows Vista or higher.
  - [.NET 4.5](http://www.microsoft.com/en-au/download/details.aspx?id=30653)
  
+ ## Todos
+ - Show locking process when file in USB is being used.
+ - Configurable hot key (globally and for each drive..not sure how to go about it yet) for (uses Ctrl + Alt + Z for now).
+ - Confgure autorun app on device added or removed (handy for backup and sync tools)
+ - Add command line support
+ - Reconnect a device without removing and re-adding
+ - Implement options UI
+ - Think of more todos.
+ 
+ 
  ## Libraries and Integrated code:
 
 * [NotifyIcon WPF](https://bitbucket.org/hardcodet/notifyicon-wpf/src)
