@@ -48,8 +48,7 @@ namespace Sru.Wpf
             notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
             OptionsWindow window = new OptionsWindow();
             var helper = new WindowInteropHelper(window);
-            helper.EnsureHandle();
-            _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.Z, window);
+            _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.Z, helper);
             _hotkey.HotKeyPressed += HotKeyPressed;
         }
 

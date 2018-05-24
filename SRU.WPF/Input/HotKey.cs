@@ -1,4 +1,22 @@
-﻿using System;
+﻿// Copyright (c) 2018 Yemi Kudaisi for the SRU
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this
+// software and associated documentation files (the "Software"), to deal in the Software
+// without restriction, including without limitation the rights to use, copy, modify, merge,
+// publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
+// to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+using System;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Input;
@@ -6,6 +24,9 @@ using System.Windows.Interop;
 
 namespace Sru.Wpf.Input
 {
+    /// <summary>
+    /// Implementation of windows hot keys using native win32 api
+    /// </summary>
     public sealed class HotKey : IDisposable
     {
         public event Action<HotKey> HotKeyPressed;
@@ -26,6 +47,12 @@ namespace Sru.Wpf.Input
             Contract.Requires(window != null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="modifierKeys"></param>
+        /// <param name="key"></param>
+        /// <param name="windowHandle"></param>
         public HotKey(ModifierKeys modifierKeys, Keys key, IntPtr windowHandle)
         {
             Contract.Requires(modifierKeys != ModifierKeys.None || key != Keys.None);
@@ -39,13 +66,22 @@ namespace Sru.Wpf.Input
             ComponentDispatcher.ThreadPreprocessMessage += ThreadPreprocessMessageMethod;
         }
 
+        /// <summary>
+        /// Class destructor
+        /// </summary>
         ~HotKey()
         {
             Dispose();
         }
 
+        /// <summary>
+        /// Gets or sets the key assigned to the hot key
+        /// </summary>
         public Keys Key { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the modifier keys for the hot key
+        /// </summary>
         public ModifierKeys KeyModifier { get; private set; }
 
         public void RegisterHotKey()
