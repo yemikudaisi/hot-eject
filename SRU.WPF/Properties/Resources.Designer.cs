@@ -22,7 +22,7 @@ namespace Sru.Wpf.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Sru.Wpf.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sru.Wpf.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Sru.Wpf.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,9 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to Exit.
         /// </summary>
-        internal static string About {
+        public static string About {
             get {
                 return ResourceManager.GetString("About", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
-        internal static string Exit {
+        public static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
-        internal static string Help {
+        public static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Hide options window.
         /// </summary>
-        internal static string HideWindow {
+        public static string HideWindow {
             get {
                 return ResourceManager.GetString("HideWindow", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Double-click for options, right-click for menu.
         /// </summary>
-        internal static string NotificationToolTip {
+        public static string NotificationToolTip {
             get {
                 return ResourceManager.GetString("NotificationToolTip", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
-        internal static string Options {
+        public static string Options {
             get {
                 return ResourceManager.GetString("Options", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Safely remove device.
         /// </summary>
-        internal static string RemoveDevice {
+        public static string RemoveDevice {
             get {
                 return ResourceManager.GetString("RemoveDevice", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Sru.Wpf.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Show options window.
         /// </summary>
-        internal static string ShowWindow {
+        public static string ShowWindow {
             get {
                 return ResourceManager.GetString("ShowWindow", resourceCulture);
             }

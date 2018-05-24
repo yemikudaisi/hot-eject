@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Exit" xml:space="preserve">
+  <data name="About" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="RemoveDevice" xml:space="preserve">
-    <value>Safely remove device</value>
-  </data>
-  <data name="NotificationToolTip" xml:space="preserve">
-    <value>Double-click for options, right-click for menu</value>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="HideWindow" xml:space="preserve">
+    <value>Hide options window</value>
+  </data>
+  <data name="NotificationToolTip" xml:space="preserve">
+    <value>Double-click for options, right-click for menu</value>
+  </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="RemoveDevice" xml:space="preserve">
+    <value>Safely remove device</value>
+  </data>
   <data name="ShowWindow" xml:space="preserve">
     <value>Show options window</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="HideWindow" xml:space="preserve">
-    <value>Hide options window</value>
   </data>
 </root>
