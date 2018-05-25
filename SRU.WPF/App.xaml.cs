@@ -37,6 +37,7 @@ namespace Sru.Wpf
     /// </summary>
     public partial class App : Application
     {
+        /**
         private TaskbarIcon notifyIcon;
         private HotKey _hotkey;
 
@@ -46,9 +47,8 @@ namespace Sru.Wpf
 
             //create the notifyicon (it's a resource declared in NotifyIconResources.xaml
             notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
-            OptionsWindow window = new OptionsWindow();
-            var helper = new WindowInteropHelper(window);
-            _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.Z, helper);
+            var interopHelper = new WindowInteropHelper(new Window());
+            _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.Z, interopHelper);
             _hotkey.HotKeyPressed += HotKeyPressed;
         }
 
@@ -61,6 +61,6 @@ namespace Sru.Wpf
         {
             notifyIcon.Dispose(); //the icon would clean up automatically, but this is cleaner
             base.OnExit(e);
-        }
+        }*/
     }
 }
