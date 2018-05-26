@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using Sru.Core;
 using Sru.Core.Usb;
+using Sru.Wpf.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,19 @@ namespace Sru.Wpf.ViewModels
             Devices = VolumeManager.GetDeviceClass().Devices;
         }
 
+        public void  Eject(Device o)
+        {
+            if (o.IsUsb)
+            {
+                o.Eject(false);
+                ToastNotification.Toast($"{o.DeviceClass} {Properties.Resources.Removed.ToLower()}");
+            }
+            else
+            {
+                ToastNotification.Toast($"{Properties.Resources.UnableRemove}");
+            }
+                
+        }
         protected override void OnActivate()
         {
             base.OnActivate();

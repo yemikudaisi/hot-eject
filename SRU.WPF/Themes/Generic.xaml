@@ -4,16 +4,17 @@
                     xmlns:controls="clr-namespace:Sru.Wpf.Controls">
 
     <SolidColorBrush x:Key="Accent" Color="#005B9E" />
+    <SolidColorBrush x:Key="AccentForeground" Color="White" />
     <SolidColorBrush x:Key="AccentHoverBackground" Color="#0696FF" />
+    
     <SolidColorBrush x:Key="ContentForeground" Color="Gray" />
     
-    
-    <SolidColorBrush x:Key="AccentForeground" Color="White" />
     <SolidColorBrush x:Key="WindowBackground" Color="White"/>
     <SolidColorBrush x:Key="WindowBorderBrush" Color="DarkGray"/>
+    <SolidColorBrush x:Key="WindowForeground" Color="White"/>
     <Thickness x:Key="WindowBorderthickness" >1</Thickness>
-    <SolidColorBrush x:Key="InnerWindowBackground" Color="White"/>
-    <SolidColorBrush x:Key="InnerWindowBorderBrush" Color="Gray"/>
+
+    <SolidColorBrush x:Key="OptionsWindowBorderBrush" Color="LightSlateGray"/>
     
     <Thickness x:Key="InnerWindowBorderthickness" >1</Thickness>
     <!--  Button style -->
@@ -123,16 +124,16 @@
     <Style TargetType="{x:Type controls:OptionsWindow}">
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
-        <Setter Property="Background" Value="#00fe79"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="Silver"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource WindowBorderthickness}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource OptionsWindowBorderBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource For}"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:ToastWindow}">
-                    <Border BorderThickness="1"
-                            BorderBrush="Gray"
-                            Background="White"
+                <ControlTemplate TargetType="{x:Type controls:OptionsWindow}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
                             Padding="{TemplateBinding Padding}">
                         <Grid>
                             <AdornerDecorator>
@@ -152,10 +153,13 @@
         <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
         <Setter Property="BorderThickness" Value="{StaticResource WindowBorderthickness}"/>
         <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:PlainWindow}">
-                    <Border Background="{StaticResource InnerWindowBackground}" BorderBrush="{StaticResource InnerWindowBorderBrush}" BorderThickness="{StaticResource InnerWindowBorderthickness}">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <Grid>
                                 <Grid.RowDefinitions>

@@ -109,7 +109,7 @@ namespace Sru.Wpf
             set
             {
                 _taskbarIcon = value;
-                _taskbarIcon.MouseLeftButtonDown += (s,e) => {
+                _taskbarIcon.MouseDown += (s,e) => {
                     ShowWindow();
                 };
                 _taskbarIcon.TrayMouseDoubleClick += (s, e) => {

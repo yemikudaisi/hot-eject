@@ -156,4 +156,7 @@
   <data name="WereRemoved" xml:space="preserve">
     <value>were removed</value>
   </data>
+  <data name="UnableRemove" xml:space="preserve">
+    <value>Unable to remove device</value>
+  </data>
 </root>

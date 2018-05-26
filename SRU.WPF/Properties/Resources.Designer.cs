@@ -160,6 +160,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to remove device.
+        /// </summary>
+        public static string UnableRemove {
+            get {
+                return ResourceManager.GetString("UnableRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to was removed.
         /// </summary>
         public static string WasRemoved {
