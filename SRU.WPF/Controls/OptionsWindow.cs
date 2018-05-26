@@ -15,9 +15,6 @@ namespace Sru.Wpf.Controls
             Deactivated += (s, e) => { Hide(); };
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
-            ShowInTaskbar = false;
-            ShowActivated = false;
-
         }
 
         private void ToastWindowLoaded(object sender, RoutedEventArgs e)

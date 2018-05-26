@@ -32,20 +32,22 @@ namespace Sru.Core.Usb
     /// A generic base class for physical devices.
     /// </summary>
     [TypeConverter(typeof(ExpandableObjectConverter))]
+#pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
     public class Device : IComparable
+#pragma warning restore S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
     {
-        private string _path;
-        private DeviceClass _deviceClass;
+        private readonly string _path;
+        private readonly DeviceClass _deviceClass;
         private string _description;
         private string _class;
         private string _classGuid;
-        private int _disknum;
+        private readonly int _disknum;
         private Device _parent;
-        private int _index;
+        private readonly int _index;
         private DeviceCapabilities _capabilities = DeviceCapabilities.Unknown;
         private List<Device> _removableDevices;
         private string _friendlyName;
-        private Native.SP_DEVINFO_DATA _deviceInfoData;
+        private readonly Native.SP_DEVINFO_DATA _deviceInfoData;
 
         internal Device(DeviceClass deviceClass, Native.SP_DEVINFO_DATA deviceInfoData, string path, int index, int disknum = -1)
         {

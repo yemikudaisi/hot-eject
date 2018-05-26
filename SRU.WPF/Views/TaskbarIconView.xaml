@@ -16,16 +16,6 @@
             Visibility="Visible"
             Name="_taskbarIcon"
             IconSource="pack://application:,,,/sru;component/Resources/SruIcon.ico"
-            cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action ShowWindow]; [Event MouseDown] = [Action ShowWindow]">
-            <!-- Set a simple context menu  -->
-            <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Show Window" cal:Message.Attach="ShowWindow" />
-                    <MenuItem Header="Hide Window" cal:Message.Attach="HideWindow" />
-                    <Separator />
-                    <MenuItem Header="Exit" cal:Message.Attach="ExitApplication" />
-                </ContextMenu>
-            </tb:TaskbarIcon.ContextMenu>
-        </tb:TaskbarIcon>
+            cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action ShowWindow]; [Event MouseDown] = [Action ShowWindow]"/>
     </Grid>
 </infrastructure:TaskbarIconWindow>

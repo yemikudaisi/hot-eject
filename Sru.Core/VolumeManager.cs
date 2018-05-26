@@ -30,7 +30,7 @@ namespace Sru.Core
         public static void EjectVolumeDevice(String driveLabel)
         {
             VolumeDeviceClass volumes = new VolumeDeviceClass();
-            foreach (Volume vol in volumes.Devices)
+            foreach (Volume vol in volumes.Devices.OfType<Volume>())
             {
                 if (vol.LogicalDrive.Equals(driveLabel))
                 {
@@ -44,10 +44,11 @@ namespace Sru.Core
         {
             IList<Volume> ejectedDevices = new List<Volume>();
             VolumeDeviceClass volumes = new VolumeDeviceClass();
-            foreach (Volume vol in volumes.Devices)
+            foreach (Volume vol in volumes.Devices.OfType<Volume>())
             {
-                if (vol.IsUsb && vol.RemovableDevices.Count > 0) {
-
+                if (vol.IsUsb && vol.RemovableDevices.Count > 0)
+                {
+                    vol.Eject(false);
                     // add to list of ejected devices
                     ejectedDevices.Add(vol);
                 }

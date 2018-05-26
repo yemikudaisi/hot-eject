@@ -125,7 +125,7 @@ namespace Sru.Wpf
         }
 
         private TaskbarIcon _taskbarIcon;
-        private IWindowManager _windowManager;
+        private readonly IWindowManager _windowManager;
         private OptionsViewModel _optionsViewModel;
     }
 }
