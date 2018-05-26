@@ -97,7 +97,7 @@
         <Setter Property="Background" Value="{StaticResource Accent}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Silver"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource AccentHoverBackground}"/>
         <Setter Property="Height" Value="80" />
         <Setter Property="Width" Value="250" />
         <Setter Property="Template">
@@ -110,7 +110,7 @@
                             Padding="{TemplateBinding Padding}">
                         <Grid>
                             <AdornerDecorator>
-                                <TextBlock FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{TemplateBinding Text}" Foreground="{StaticResource AccentForeground}" />
+                                <TextBlock FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{TemplateBinding Text}" Foreground="{StaticResource AccentForeground}" />
                             </AdornerDecorator>
                         </Grid>
                     </Border>

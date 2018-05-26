@@ -68,7 +68,7 @@ namespace Sru.Wpf.Controls
             this.Top = desktopWorkingArea.Bottom - this.Height - 10;
             Closing -= ToastWindowClosing;
             ;
-            var anim = new DoubleAnimation(0.8, (Duration)TimeSpan.FromSeconds(0.5));
+            var anim = new DoubleAnimation(1, (Duration)TimeSpan.FromSeconds(0.5));
             this.BeginAnimation(UIElement.OpacityProperty, anim);
         }
 

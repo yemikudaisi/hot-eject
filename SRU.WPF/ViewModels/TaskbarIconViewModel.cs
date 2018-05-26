@@ -37,10 +37,10 @@ namespace Sru.Wpf
                     toastMessage = Properties.Resources.NoDriveRemoved;
                 }
                 else if( ejected.Count == 1) {
-                    toastMessage = $"{ejected[0].LogicalDrive} {Properties.Resources.Removed}";
+                    toastMessage = $"{ejected[0].Description} {ejected[0].LogicalDrive} {Properties.Resources.Removed}";
                 }else
                 {
-                    toastMessage = "Removed ";
+                    toastMessage = $"{Properties.Resources.Removed.ToLower()} ";
                     for (var i = 0; i < ejected.Count; i++)
                     {
                         var d = ejected[i];
@@ -68,6 +68,7 @@ namespace Sru.Wpf
 
         public void ShowWindow()
         {
+            _optionsViewModel = new OptionsViewModel();
             _windowManager.ShowWindow(_optionsViewModel);
 
             NotifyOfPropertyChange(() => CanShowWindow);

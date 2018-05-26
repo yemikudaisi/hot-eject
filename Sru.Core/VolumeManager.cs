@@ -46,8 +46,7 @@ namespace Sru.Core
             VolumeDeviceClass volumes = new VolumeDeviceClass();
             foreach (Volume vol in volumes.Devices)
             {
-                if (vol.IsUsb && vol.RemovableDevices.Count > 0) { 
-                    vol.Eject(false);
+                if (vol.IsUsb && vol.RemovableDevices.Count > 0) {
 
                     // add to list of ejected devices
                     ejectedDevices.Add(vol);

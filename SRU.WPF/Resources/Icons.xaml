@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Sru.Wpf.Resources">
     <Viewbox x:Key="MenuIcon" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Path Data="M23,14C24.10498,14 25,14.89502 25,16 25,17.10498 24.10498,18 23,18 21.89502,18 21,17.10498 21,16 21,14.89502 21.89502,14 23,14z M16,14C17.105,14 18,14.895 18,16 18,17.105 17.105,18 16,18 14.895,18 14,17.105 14,16 14,14.895 14.895,14 16,14z M9,14C10.105,14 11,14.895 11,16 11,17.105 10.105,18 9,18 7.8950005,18 7,17.105 7,16 7,14.895 7.8950005,14 9,14z M16,2C8.2799997,2 2,8.2800002 2,16 2,23.72 8.2799997,30 16,30 23.72,30 30,23.72 30,16 30,8.2800002 23.72,2 16,2z M16,0C24.822,0 32,7.178 32,16 32,24.822 24.822,32 16,32 7.1780005,32 0,24.822 0,16 0,7.178 7.1780005,0 16,0z"  Stretch="Uniform" Fill="White" Width="4" Height="4" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+        <Path Data="M0,23.600006L30.9,23.600006 30.9,32 0,32z M0,11.799988L30.9,11.799988 30.9,20.200012 0,20.200012z M0,0L30.9,0 30.9,8.3999939 0,8.3999939z"  Stretch="Uniform" Fill="White" Width="4" Height="4" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
             <Path.RenderTransform>
                 <TransformGroup>
                     <TransformGroup.Children>

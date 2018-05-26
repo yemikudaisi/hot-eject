@@ -18,6 +18,7 @@ SRU Utility software that allows user to assign hotkeys (e.g Ctrl + Alt + Z) for
  
  ## Libraries and Integrated code:
 
+* [Caliburn.micro](https://caliburnmicro.com/)
 * [NotifyIcon WPF](https://bitbucket.org/hardcodet/notifyicon-wpf/src)
 * [Apache log4net™](https://logging.apache.org/log4net/)
 * [Eject USB disks using C#](https://www.codeproject.com/Articles/13530/Eject-USB-disks-using-C)
