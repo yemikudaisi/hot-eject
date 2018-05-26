@@ -2,6 +2,13 @@
 ## Overview
 SRU Utility software that allows user to assign hotkeys (e.g Ctrl + Alt + Z) for use in safely removing USB drives. It was inspired by the majority of people I see around clicking on Ctrl + Alt when attempting to remove USB. I sincerely don't know where the got idea came from. This is me trying to help.
 
+##Screenshots
+
+![No removable device toast notification for hotkeys](images/no-device-toast.png)
+![Device removal toast notification for hotkeys](images/volume-removed-toast.png)
+![Options window activated on taskbar icon double click](images/options-window.png)
+![Options windows menu](images/options-window-context-menu.png)
+
 ## System Requirements (running SRU)
  - Windows Vista or higher.
  - [.NET 4.5](http://www.microsoft.com/en-au/download/details.aspx?id=30653)
