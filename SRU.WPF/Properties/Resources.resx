@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="And" xml:space="preserve">
+    <value>and</value>
+  </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
@@ -129,16 +132,28 @@
   <data name="HideWindow" xml:space="preserve">
     <value>Hide options window</value>
   </data>
+  <data name="NoDriveRemoved" xml:space="preserve">
+    <value>No device was removed</value>
+  </data>
   <data name="NotificationToolTip" xml:space="preserve">
     <value>Double-click for options, right-click for menu</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="Removed" xml:space="preserve">
+    <value>Removed</value>
+  </data>
   <data name="RemoveDevice" xml:space="preserve">
     <value>Safely remove device</value>
   </data>
   <data name="ShowWindow" xml:space="preserve">
     <value>Show options window</value>
+  </data>
+  <data name="WasRemoved" xml:space="preserve">
+    <value>was removed</value>
+  </data>
+  <data name="WereRemoved" xml:space="preserve">
+    <value>were removed</value>
   </data>
 </root>

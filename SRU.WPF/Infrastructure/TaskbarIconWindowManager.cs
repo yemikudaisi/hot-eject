@@ -7,18 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Sru.Wpf.Infrastructure
+namespace Sru.Wpf.Controls
 {
     /// <summary>
     /// A window manager that hides the MainWindow by default
     /// Design so to enable notification icon appear on startup
     /// </summary>
     [Export]
-    public class CustomWindowManager : WindowManager
+    public class TaskbarIconWindowManager : WindowManager
     {
-        public Window MainWindow(object rootModel, object context = null)
+        public TaskbarIconWindow MainWindow(object rootModel, object context = null)
         {
-            return CreateWindow(rootModel, false, context, null);
+            var w = CreateWindow(rootModel, false, context, null); ;
+            return w as TaskbarIconWindow;
         }
     }
 }

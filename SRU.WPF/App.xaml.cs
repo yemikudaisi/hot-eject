@@ -37,30 +37,6 @@ namespace Sru.Wpf
     /// </summary>
     public partial class App : Application
     {
-        /**
-        private TaskbarIcon notifyIcon;
-        private HotKey _hotkey;
 
-        protected override void OnStartup(StartupEventArgs eArgs)
-        {
-            base.OnStartup(eArgs);
-
-            //create the notifyicon (it's a resource declared in NotifyIconResources.xaml
-            notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
-            var interopHelper = new WindowInteropHelper(new Window());
-            _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.Z, interopHelper);
-            _hotkey.HotKeyPressed += HotKeyPressed;
-        }
-
-        private void HotKeyPressed(HotKey obj)
-        {
-            VolumeManager.EjectVolumeDevice("D:");
-        }
-
-        protected override void OnExit(ExitEventArgs e)
-        {
-            notifyIcon.Dispose(); //the icon would clean up automatically, but this is cleaner
-            base.OnExit(e);
-        }*/
     }
 }

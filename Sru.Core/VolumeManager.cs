@@ -55,5 +55,10 @@ namespace Sru.Core
             }
             return ejectedDevices;
         }
+
+        public static VolumeDeviceClass GetDeviceClass()
+        {
+            return new VolumeDeviceClass();
+        }
     }
 }

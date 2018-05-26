@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
-using Sru.Wpf.Infrastructure;
+using Hardcodet.Wpf.TaskbarNotification;
+using Sru.Wpf.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -42,14 +43,22 @@ namespace Sru.Wpf
             return exportedValues.First<object>();
         }
 
+        TaskbarIcon _taskbarIcon;
+
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            var viewModel = IoC.Get<IShell>();
-
-            var windowManager = IoC.Get<CustomWindowManager>();
-
+            var viewModel = IoC.Get<ITaskbarIconShell>();
+            var windowManager = IoC.Get<TaskbarIconWindowManager>();
             var _mainWindow = windowManager.MainWindow(viewModel);
+            _taskbarIcon = _mainWindow.TaskBarIcon;
+            viewModel.TaskbarIcon = _taskbarIcon;
             _mainWindow.Hide();
+        }
+
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            _taskbarIcon.Dispose();
+            base.OnExit(sender, e);
         }
 
     }

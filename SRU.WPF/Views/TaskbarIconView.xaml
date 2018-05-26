@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Sru.Wpf.TrayIconView"
+﻿<infrastructure:TaskbarIconWindow x:Class="Sru.Wpf.TaskbarIconView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,20 +6,26 @@
              xmlns:tb="http://www.hardcodet.net/taskbar"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:local="clr-namespace:Sru.Wpf"
+             xmlns:infrastructure="clr-namespace:Sru.Wpf.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    
     <Grid>
         <tb:TaskbarIcon
             Visibility="Visible"
-            x:Name="notifyIcon"
-            IconSource="SruIcon.ico"
-            MenuActivation="LeftOrRightClick" PopupActivation="DoubleClick">
+            Name="_taskbarIcon"
+            IconSource="pack://application:,,,/sru;component/Resources/SruIcon.ico"
+            cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action ShowWindow]; [Event MouseDown] = [Action ShowWindow]">
             <!-- Set a simple context menu  -->
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Exit" cal:Message.Attach="AppExit" />
+                    <MenuItem Header="Show Window" cal:Message.Attach="ShowWindow" />
+                    <MenuItem Header="Hide Window" cal:Message.Attach="HideWindow" />
+                    <Separator />
+                    <MenuItem Header="Exit" cal:Message.Attach="ExitApplication" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
     </Grid>
-</UserControl>
+</infrastructure:TaskbarIconWindow>

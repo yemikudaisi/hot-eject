@@ -70,6 +70,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to and.
+        /// </summary>
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
@@ -97,6 +106,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No device was removed.
+        /// </summary>
+        public static string NoDriveRemoved {
+            get {
+                return ResourceManager.GetString("NoDriveRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Double-click for options, right-click for menu.
         /// </summary>
         public static string NotificationToolTip {
@@ -115,6 +133,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removed.
+        /// </summary>
+        public static string Removed {
+            get {
+                return ResourceManager.GetString("Removed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Safely remove device.
         /// </summary>
         public static string RemoveDevice {
@@ -129,6 +156,24 @@ namespace Sru.Wpf.Properties {
         public static string ShowWindow {
             get {
                 return ResourceManager.GetString("ShowWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to was removed.
+        /// </summary>
+        public static string WasRemoved {
+            get {
+                return ResourceManager.GetString("WasRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to were removed.
+        /// </summary>
+        public static string WereRemoved {
+            get {
+                return ResourceManager.GetString("WereRemoved", resourceCulture);
             }
         }
     }

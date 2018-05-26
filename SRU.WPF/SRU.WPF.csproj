@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sru.Wpf</RootNamespace>
-    <AssemblyName>Sru.Wpf</AssemblyName>
+    <AssemblyName>sru</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -87,15 +87,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Infrastructure\CustomWindowManager.cs" />
-    <Compile Include="Infrastructure\IShell.cs" />
+    <Compile Include="Controls\OptionsWindow.cs" />
+    <Compile Include="Controls\PlainWindow.cs" />
+    <Compile Include="Infrastructure\BindingProxy.cs" />
+    <Compile Include="Infrastructure\TaskbarIconWindowManager.cs" />
+    <Compile Include="Infrastructure\ITaskbarIconShell.cs" />
+    <Compile Include="Controls\TaskbarIconWindow.cs" />
+    <Compile Include="Controls\ToastWindow.cs" />
+    <Compile Include="Infrastructure\ToastNotification.cs" />
     <Compile Include="Input\HotKey.cs" />
     <Compile Include="Input\HotKeyNativeApi.cs" />
     <Compile Include="Input\Keys.cs" />
     <Compile Include="Localization\LocaleManager.cs" />
     <Compile Include="Infrastructure\LogManager.cs" />
     <Compile Include="ViewModels\OptionsViewModel.cs" />
-    <Compile Include="ViewModels\TrayIconViewModel.cs" />
+    <Compile Include="ViewModels\PreferencesViewModel.cs" />
+    <Compile Include="ViewModels\TaskbarIconViewModel.cs" />
+    <Compile Include="ViewModels\ToastViewModel.cs" />
+    <Compile Include="Views\TaskbarIconView.xaml.cs">
+      <DependentUpon>TaskbarIconView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotifyIconViewModel.cs" />
@@ -140,6 +151,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\NotifyIconResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,18 +163,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\OptionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TrayIconView.xaml">
+    <Page Include="Views\PreferencesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskbarIconView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToastView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="SruIcon.ico" />
+    <Resource Include="Resources\SruIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Sru.Wpf.Resources">
+    <Viewbox x:Key="MenuIcon" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Path Data="M23,14C24.10498,14 25,14.89502 25,16 25,17.10498 24.10498,18 23,18 21.89502,18 21,17.10498 21,16 21,14.89502 21.89502,14 23,14z M16,14C17.105,14 18,14.895 18,16 18,17.105 17.105,18 16,18 14.895,18 14,17.105 14,16 14,14.895 14.895,14 16,14z M9,14C10.105,14 11,14.895 11,16 11,17.105 10.105,18 9,18 7.8950005,18 7,17.105 7,16 7,14.895 7.8950005,14 9,14z M16,2C8.2799997,2 2,8.2800002 2,16 2,23.72 8.2799997,30 16,30 23.72,30 30,23.72 30,16 30,8.2800002 23.72,2 16,2z M16,0C24.822,0 32,7.178 32,16 32,24.822 24.822,32 16,32 7.1780005,32 0,24.822 0,16 0,7.178 7.1780005,0 16,0z"  Stretch="Uniform" Fill="White" Width="4" Height="4" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TransformGroup.Children>
+                        <RotateTransform Angle="0" />
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </TransformGroup.Children>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+    </Viewbox>
+
+    <Viewbox x:Key="UsbIcon">
+        <Grid>
+            <Path Data="M3.9000072,28.199982L3.9000072,30 11.799998,30 11.799998,28.199982z M0,7.8999939L15.6,7.8999939 15.6,32 0,32z M9.2999985,3L9.2999985,4.6999817 10.900005,4.6999817 10.900005,3z M4.900007,3L4.900007,4.6999817 6.4999969,4.6999817 6.4999969,3z M2.9999986,0L12.699991,0 12.699991,6 2.9999986,6z" Stretch="Uniform" Fill="White" Width="4" Height="4" Margin="0,0,0,0" />
+            <Path Data="M28.805753,0L31.974733,0C32.167724,0.27001924 31.208732,0.60900805 30.678737,0.9630113 22.839801,6.2050091 16.330854,13.03398 10.513902,19.745 6.9349381,16.519997 3.7629682,13.021987 0,9.9210077 0.63698797,9.253986 1.4519834,8.7079969 2.4479772,8.2830092 4.1869603,9.2220036 5.6669437,10.081988 7.7689305,11.090989 8.0639258,11.23201 10.055913,12.143997 10.22591,12.136001 10.603912,12.115982 11.617896,10.918992 12.2419,10.401994 16.76185,6.6610023 23.254806,2.4390226 28.805753,0z" 
+                  Stretch="Uniform" 
+                  Fill="#FF57D162" 
+                  Width="4" Height="4"
+                  Margin="3,0,0,0" 
+                  RenderTransformOrigin="0.5,0.5" >
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <RotateTransform Angle="0" />
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Grid>        
+    </Viewbox>
+</ResourceDictionary>
