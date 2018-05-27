@@ -18,6 +18,7 @@ namespace Sru.Wpf.ViewModels
 
         public OptionsViewModel()
         {
+            //Devices = VolumeManager.ListUSBDevices();
             Devices = VolumeManager.GetDeviceClass().Devices;
             _preferencesViewModel = new PreferencesViewModel();
             ResetDeviceList();

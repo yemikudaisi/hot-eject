@@ -6,8 +6,25 @@
         xmlns:local="clr-namespace:Sru.Wpf.Views"
         xmlns:controls="clr-namespace:Sru.Wpf.Controls"
         mc:Ignorable="d"
-        Title="PreferencesView" Height="300" Width="300">
+        Title="PreferencesView" Height="400" Width="500">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border>
+            <ListBox MinWidth="100" Name="ScreenCollection" SelectedItem="{Binding SelectedScreen, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <TextBlock Text="{Binding DisplayName}" />
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        <Border Grid.Column="1">
+            <ContentControl x:Name="ActiveItem" />
+        </Border>
     </Grid>
 </controls:PlainWindow>

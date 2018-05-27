@@ -30,11 +30,18 @@ namespace Sru.Wpf.Controls
 
         public ToastWindow()
         {
+            Topmost = true;
             Loaded += ToastWindow_Loaded;
-            Deactivated += (s, e) => { Close(); };
+            Deactivated += ToastWindowDeactivated;
             Closing += ToastWindowClosing;
             StartTimer();
             this.Opacity = 0;
+        }
+
+        private void ToastWindowDeactivated(object sender, EventArgs e)
+        {
+            Window window = (Window)sender;
+            window.Topmost = true;
         }
 
         private void ToastWindowClosing(object sender, CancelEventArgs e)

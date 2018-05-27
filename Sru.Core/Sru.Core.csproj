@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOHelper.cs" />
+    <Compile Include="OSDelegate.cs" />
     <Compile Include="Usb\Device.cs" />
     <Compile Include="Usb\DeviceCapabilities.cs" />
     <Compile Include="Usb\DeviceClass.cs" />
     <Compile Include="Usb\DiskDeviceClass.cs" />
     <Compile Include="Usb\Native.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usb\UsbDeviceInformation.cs" />
     <Compile Include="Usb\Volume.cs" />
     <Compile Include="Usb\VolumeDeviceClass.cs" />
     <Compile Include="VolumeManager.cs" />

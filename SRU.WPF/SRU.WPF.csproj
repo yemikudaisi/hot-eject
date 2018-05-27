@@ -100,6 +100,8 @@
     <Compile Include="Input\Keys.cs" />
     <Compile Include="Localization\LocaleManager.cs" />
     <Compile Include="Infrastructure\LogManager.cs" />
+    <Compile Include="ViewModels\Preferences\BasicPreferencesViewModel.cs" />
+    <Compile Include="ViewModels\Preferences\HotkeysPreferencesViewModel.cs" />
     <Compile Include="ViewModels\OptionsViewModel.cs" />
     <Compile Include="ViewModels\PreferencesViewModel.cs" />
     <Compile Include="ViewModels\TaskbarIconViewModel.cs" />
@@ -152,6 +154,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Preferences\BasicPreferencesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Preferences\HotkeysPreferencesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
