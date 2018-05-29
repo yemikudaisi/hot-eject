@@ -282,6 +282,7 @@ namespace Sru.Core.Usb
                     StringBuilder sb = new StringBuilder(1024);
 
                     Native.PNP_VETO_TYPE veto;
+                    // This will fail if a file in the USB device is being used by another process
                     int hr = Native.CM_Request_Device_Eject(device.InstanceHandle, out veto, sb, sb.Capacity, 0);
                     if (hr != 0)
                         throw new Win32Exception(hr);

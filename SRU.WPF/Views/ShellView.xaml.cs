@@ -19,9 +19,9 @@ namespace Sru.Wpf
     /// <summary>
     /// Interaction logic for TaskbarIconView.xaml
     /// </summary>
-    public partial class TaskbarIconView : TaskbarIconWindow
+    public partial class ShellView : TaskbarIconWindow
     {
-        public TaskbarIconView()
+        public ShellView()
         {
             InitializeComponent();
         }

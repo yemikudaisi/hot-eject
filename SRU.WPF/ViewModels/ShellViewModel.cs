@@ -10,14 +10,20 @@ using System.Windows.Interop;
 using Hardcodet.Wpf.TaskbarNotification;
 using Sru.Core;
 using Sru.Wpf.Infrastructure;
+using Sru.Core.Usb;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sru.Wpf
 {
     [Export(typeof(ITaskbarIconShell))]
-    public class TaskbarIconViewModel : Screen, ITaskbarIconShell
+    public class ShellViewModel : Screen, ITaskbarIconShell
     {
-        public TaskbarIconViewModel()
+        public ShellViewModel()
         {
+            OptionsFactory factory = new OptionsFactory();
+            var expected = "en-us";
+            var actual = (string)factory["Language"];
             InitializeHotKeys();
             _optionsViewModel = new OptionsViewModel();
             _windowManager = IoC.Get<IWindowManager>();
@@ -26,30 +32,47 @@ namespace Sru.Wpf
         private void InitializeHotKeys()
         {
             var interopHelper = new WindowInteropHelper(new Window());
-            var _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.Z, interopHelper);
+            var _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, CustomKeys.Z, interopHelper);
             _hotkey.HotKeyPressed += (h) =>
             {
                 Console.Beep();
-                var ejected = VolumeManager.EjectRemovableDevices();
+                var ejected = new List<String>();
+                foreach (var device in DeviceManager.ListUsbDevices())
+                {
+                    if (device.IsMounted)
+                    {
+                        //DeviceManager.EjectDrive(device);
+                        try
+                        {
+                            DeviceManager.EjectVolumeDevice(device.DriveLetters[0]);
+                            ejected.Add(device.Caption);
+                        }
+                        catch (Win32Exception e)
+                        {
+                            // possible cause, file being used by another device ?
+                            ToastNotification.Toast(Properties.Resources.UnableRemove);
+                        }
+                        
+                    }
+                }
                 var toastMessage = "";
                 if (ejected.Count < 1)
                 {
                     toastMessage = Properties.Resources.NoDriveRemoved;
                 }
                 else if( ejected.Count == 1) {
-                    toastMessage = $"{ejected[0].Description} {ejected[0].LogicalDrive} {Properties.Resources.Removed}";
+                    toastMessage = $"{ejected[0]} {Properties.Resources.WasRemoved}";
                 }else
                 {
                     toastMessage = $"{Properties.Resources.Removed.ToLower()} ";
                     for (var i = 0; i < ejected.Count; i++)
                     {
-                        var d = ejected[i];
                         if (i == 0)
-                            toastMessage = $"{d.LogicalDrive}";
+                            toastMessage = $"{ejected[i]}";
                         else if(i == ejected.Count - 1 && i != 0)
-                            toastMessage = $" {Properties.Resources.And} {d.LogicalDrive}";
+                            toastMessage = $" {Properties.Resources.And} {ejected[i]}";
                         else
-                            toastMessage = $", {d.LogicalDrive}";
+                            toastMessage = $", {ejected[i]}";
                     }
                 }
 

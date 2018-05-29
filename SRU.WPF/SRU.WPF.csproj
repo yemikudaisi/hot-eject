@@ -51,6 +51,13 @@
       <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HotKeyManagement.WPF.4">
+      <HintPath>..\..\..\..\Users\Yemi Kudaisi\Downloads\Compressed\Manager\Global Shortcut Manager\BondTech.HotKeyManagement.WPF.4\bin\Debug\HotKeyManagement.WPF.4.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -87,9 +94,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Controls\HotKeyEditorControl.xaml.cs">
+      <DependentUpon>HotKeyEditorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OptionsWindow.cs" />
     <Compile Include="Controls\PlainWindow.cs" />
+    <Compile Include="Converter\HotKeyToStringConverter.cs" />
+    <Compile Include="Extension\PrimitivesExtension.cs" />
     <Compile Include="Infrastructure\BindingProxy.cs" />
+    <Compile Include="Infrastructure\OptionsFactory.cs" />
     <Compile Include="Infrastructure\TaskbarIconWindowManager.cs" />
     <Compile Include="Infrastructure\ITaskbarIconShell.cs" />
     <Compile Include="Controls\TaskbarIconWindow.cs" />
@@ -97,17 +110,18 @@
     <Compile Include="Infrastructure\ToastNotification.cs" />
     <Compile Include="Input\HotKey.cs" />
     <Compile Include="Input\HotKeyNativeApi.cs" />
-    <Compile Include="Input\Keys.cs" />
+    <Compile Include="Input\CustomKeys.cs" />
+    <Compile Include="Input\SerializableHotkey.cs" />
     <Compile Include="Localization\LocaleManager.cs" />
     <Compile Include="Infrastructure\LogManager.cs" />
     <Compile Include="ViewModels\Preferences\BasicPreferencesViewModel.cs" />
     <Compile Include="ViewModels\Preferences\HotkeysPreferencesViewModel.cs" />
     <Compile Include="ViewModels\OptionsViewModel.cs" />
     <Compile Include="ViewModels\PreferencesViewModel.cs" />
-    <Compile Include="ViewModels\TaskbarIconViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ToastViewModel.cs" />
-    <Compile Include="Views\TaskbarIconView.xaml.cs">
-      <DependentUpon>TaskbarIconView.xaml</DependentUpon>
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +163,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\HotKeyEditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,7 +191,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TaskbarIconView.xaml">
+    <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

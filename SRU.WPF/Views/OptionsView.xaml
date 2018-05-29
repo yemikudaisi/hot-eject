@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:Sru.Wpf.Views"
              xmlns:controls="clr-namespace:Sru.Wpf.Controls"
              xmlns:infrastructure="clr-namespace:Sru.Wpf.Infrastructure"
-             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:cal="http://www.caliburnproject.org"                                               
+             xmlns:props="clr-namespace:Sru.Wpf.Properties"
              mc:Ignorable="d"
-             d:DesignHeight="300" MaxWidth="250" MaxHeight="200" >
+             d:DesignHeight="300" MaxWidth="250" SizeToContent="Height" >
     <controls:OptionsWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -65,19 +66,19 @@
             </DockPanel>
         </Border>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <ListBox BorderThickness="0" Name="Drives" Height="Auto" ItemsSource="{Binding Devices}">
+            <ListBox VerticalContentAlignment="Top" BorderThickness="0" Name="Devices" Height="Auto">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid HorizontalAlignment="Stretch">
                             <Border
-                                IsEnabled="{Binding IsUsb}"
+                                IsEnabled="{Binding IsMounted}"
                                 Margin="10 0 0 0" Width="220" Padding="10 10 20 10" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" HorizontalAlignment="Stretch"  Grid.IsSharedSizeScope="True">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Foreground="{StaticResource ContentForeground}">
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat=" {0} - {1}">
-                                                <Binding Path="LogicalDrive"/>
-                                                <Binding Path="Description"/>
+                                            <MultiBinding StringFormat=" {0} ({1})">
+                                                <Binding Path="Caption"/>
+                                                <Binding Path="LogicalDrives"/>
                                             </MultiBinding>
                                         </TextBlock.Text>
                                     </TextBlock>
@@ -86,6 +87,23 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.Style>
+                    <Style TargetType="{x:Type ListBox}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Items.Count,RelativeSource={RelativeSource Self}}"  Value="0">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Border Margin="10 0 0 0" Width="220" Padding="10 10 20 10" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" HorizontalAlignment="Stretch">
+                                                <TextBlock Foreground="{StaticResource ContentForeground}" Text="{x:Static props:Resources.NoRemovable}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Style>
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="cal:Message.Attach"  Value="[Event MouseDoubleClick] = [Action Eject($dataContext)]"/>

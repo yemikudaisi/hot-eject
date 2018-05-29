@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 
 namespace Sru.Core
 {
-    public class VolumeManager
+    public class DeviceManager
     {
         public static void EjectVolumeDevice(String driveLabel)
         {
@@ -71,9 +71,9 @@ namespace Sru.Core
         const int IOCTL_STORAGE_EJECT_MEDIA = 0x2D4808;
         const int IOCTL_STORAGE_MEDIA_REMOVAL = 0x002D4804;
 
-        private VolumeManager() { }
+        private DeviceManager() { }
 
-        public static bool EjectDrive(USBDeviceInformation drive)
+        public static bool EjectDrive(UsbDevice drive)
         {
             if (drive.DriveLetters.Count <= 0)
             {
@@ -98,27 +98,27 @@ namespace Sru.Core
 
             var volumeHandle = DriveFileHandle(driveLetter);
 
-            if (LockVolume(volumeHandle) == false)
+            if (!LockVolume(volumeHandle))
             {
                 return false;
             }
 
-            if (DismountVolume(volumeHandle) == false)
+            if (!DismountVolume(volumeHandle))
             {
                 return false;
             }
 
-            if (PreventVolumeRemoval(volumeHandle, false) == false)
+            if (!PreventVolumeRemoval(volumeHandle, false))
             {
                 return false;
             }
 
-            if (EjectVolume(volumeHandle) == false)
+            if (!EjectVolume(volumeHandle))
             {
                 return false;
             }
 
-            if (CloseHandle(volumeHandle) == false)
+            if (!CloseHandle(volumeHandle))
             {
                 return false;
             }
@@ -163,9 +163,9 @@ namespace Sru.Core
             return OSDelegate.CloseHandle(handle);
         }
 
-        public static List<USBDeviceInformation> ListUSBDevices()
+        public static List<UsbDevice> ListUsbDevices()
         {
-            List<USBDeviceInformation> devices = new List<USBDeviceInformation>();
+            List<UsbDevice> devices = new List<UsbDevice>();
             ManagementObjectCollection col;
             //string query = @"select * from Win32_USBControllerDevice";
             //string query = @"select * from Win32_USBHub";
@@ -191,7 +191,7 @@ namespace Sru.Core
                     }
                 }
 
-                var deviceInfo = new USBDeviceInformation
+                var deviceInfo = new UsbDevice
                 {
                     Name = device.Properties["Name"].Value.ToString(),
                     Caption = device.Properties["Caption"].Value.ToString(),

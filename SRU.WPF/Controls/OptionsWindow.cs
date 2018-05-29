@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Sru.Wpf.Controls
 {
@@ -19,20 +20,23 @@ namespace Sru.Wpf.Controls
 
         public OptionsWindow()
         {
-            Loaded += ToastWindowLoaded;
-            Deactivated += (s, e) => { Hide(); };
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
             ShowInTaskbar = false;
             ShowActivated = false;
-
+            Loaded += ToastWindowLoaded;
+            //Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { SetLocation(); }));
         }
 
-        private void ToastWindowLoaded(object sender, RoutedEventArgs e)
+        private void SetLocation()
         {
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
-            this.Top = desktopWorkingArea.Bottom - this.Height;
+            this.Top = desktopWorkingArea.Bottom - this.Height;// - 40
+        }
+        private void ToastWindowLoaded(object sender, object e)
+        {
+            SetLocation();
         }
     }
 }

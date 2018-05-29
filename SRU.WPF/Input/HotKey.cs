@@ -18,6 +18,7 @@
 
 using System;
 using System.Diagnostics.Contracts;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -35,13 +36,13 @@ namespace Sru.Wpf.Input
         private bool _isKeyRegistered;
         readonly IntPtr _handle;
 
-        public HotKey(ModifierKeys modifierKeys, Keys key, Window window)
+        public HotKey(ModifierKeys modifierKeys, CustomKeys key, Window window)
             : this(modifierKeys, key, new WindowInteropHelper(window))
         {
             Contract.Requires(window != null);
         }
 
-        public HotKey(ModifierKeys modifierKeys, Keys key, WindowInteropHelper window)
+        public HotKey(ModifierKeys modifierKeys, CustomKeys key, WindowInteropHelper window)
             : this(modifierKeys, key, window.Handle)
         {
             Contract.Requires(window != null);
@@ -53,9 +54,9 @@ namespace Sru.Wpf.Input
         /// <param name="modifierKeys"></param>
         /// <param name="key"></param>
         /// <param name="windowHandle"></param>
-        public HotKey(ModifierKeys modifierKeys, Keys key, IntPtr windowHandle)
+        public HotKey(ModifierKeys modifierKeys, CustomKeys key, IntPtr windowHandle)
         {
-            Contract.Requires(modifierKeys != ModifierKeys.None || key != Keys.None);
+            Contract.Requires(modifierKeys != ModifierKeys.None || key != CustomKeys.None);
             Contract.Requires(windowHandle != IntPtr.Zero);
 
             Key = key;
@@ -77,7 +78,7 @@ namespace Sru.Wpf.Input
         /// <summary>
         /// Gets or sets the key assigned to the hot key
         /// </summary>
-        public Keys Key { get; private set; }
+        public CustomKeys Key { get; private set; }
 
         /// <summary>
         /// Gets or sets the modifier keys for the hot key
@@ -86,13 +87,13 @@ namespace Sru.Wpf.Input
 
         public void RegisterHotKey()
         {
-            if (Key == Keys.None)
+            if (Key == CustomKeys.None)
                 return;
             if (_isKeyRegistered)
                 UnregisterHotKey();
             _isKeyRegistered = HotKeyNativeApi.RegisterHotKey(_handle, _id, KeyModifier, Key);
             if (!_isKeyRegistered)
-                throw new ApplicationException("Hotkey already in use");
+                throw new ApplicationException("HotKey already in use");
         }
 
         public void UnregisterHotKey()
@@ -123,6 +124,24 @@ namespace Sru.Wpf.Input
         {
             if (HotKeyPressed != null)
                 HotKeyPressed(this);
+        }
+
+        public override string ToString()
+        {
+            var str = new StringBuilder();
+
+            if (KeyModifier.HasFlag(ModifierKeys.Control))
+                str.Append("Ctrl + ");
+            if (KeyModifier.HasFlag(ModifierKeys.Shift))
+                str.Append("Shift + ");
+            if (KeyModifier.HasFlag(ModifierKeys.Alt))
+                str.Append("Alt + ");
+            if (KeyModifier.HasFlag(ModifierKeys.Windows))
+                str.Append("Win + ");
+
+            str.Append(Key);
+
+            return str.ToString();
         }
     }
 }

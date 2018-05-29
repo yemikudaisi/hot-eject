@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sru.Core.Usb
 {
-    public class USBDeviceInformation
+    public class UsbDevice
     {
         public string Name { get; set; }
         public string Caption { get; set; }
@@ -19,25 +19,30 @@ namespace Sru.Core.Usb
         {
             get
             {
-                return driveLetters;
+                return _driveLetters;
             }
 
             set
             {
-                driveLetters = value;
+                _driveLetters = value;
             }
         }
 
-        private List<string> driveLetters;
+        public String LogicalDrives
+        {
+            get { return string.Join(", ", DriveLetters); }
+        }
+
+        private List<string> _driveLetters;
 
         public string DriveLettersToString()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < DriveLetters.Count; i++)
+            for (int i = 0; i < _driveLetters.Count; i++)
             {
                 string letter = DriveLetters[i];
                 sb.Append(letter);
-                if (i != DriveLetters.Count - 1)
+                if (i != _driveLetters.Count - 1)
                 {
                     sb.Append(", ");
                 }
@@ -45,6 +50,10 @@ namespace Sru.Core.Usb
             return sb.ToString();
         }
 
+        public bool IsMounted
+        {
+            get { return DriveLetters.Count > 0; }
+        }
         public override string ToString()
         {
             string driveLetters = DriveLettersToString();

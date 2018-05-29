@@ -13,33 +13,24 @@ namespace Sru.Wpf.ViewModels
 {
     public class OptionsViewModel : Screen
     {
-        IList<Device> _devices;
-        PreferencesViewModel _preferencesViewModel;
+        private IList<UsbDevice> _devices;
+        private readonly PreferencesViewModel _preferencesViewModel;
 
         public OptionsViewModel()
-        {
-            //Devices = VolumeManager.ListUSBDevices();
-            Devices = VolumeManager.GetDeviceClass().Devices;
+        {            
             _preferencesViewModel = new PreferencesViewModel();
             ResetDeviceList();
         }
 
         private void ResetDeviceList()
         {
-            Devices = VolumeManager.GetDeviceClass().Devices;
+            Devices = DeviceManager.ListUsbDevices();
         }
 
-        public void  Eject(Device o)
+        public void  Eject(UsbDevice usbDevice)
         {
-            if (o.IsUsb)
-            {
-                o.Eject(false);
-                ToastNotification.Toast($"{o.DeviceClass} {Properties.Resources.Removed.ToLower()}");
-            }
-            else
-            {
-                ToastNotification.Toast($"{Properties.Resources.UnableRemove}");
-            }
+            DeviceManager.EjectDrive(usbDevice);
+            ToastNotification.Toast($"{usbDevice.Caption} {Properties.Resources.Removed.ToLower()}");
                 
         }
         protected override void OnActivate()
@@ -49,7 +40,7 @@ namespace Sru.Wpf.ViewModels
             NotifyOfPropertyChange(() => CanShowPreferences);
         }
 
-        public IList<Device> Devices
+        public IList<UsbDevice> Devices
         {
             get
             {

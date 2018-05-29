@@ -9,7 +9,7 @@ namespace Sru.Wpf.Input
     /// <summary>
     ///     Enum from System.Windows.Forms.Keys
     /// </summary>
-    public enum Keys
+    public enum CustomKeys
     {
         Modifiers = -65536,
         None = 0,

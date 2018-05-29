@@ -23,7 +23,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
-        <Border Grid.Column="1">
+        <Border Grid.Column="1" Padding="10">
             <ContentControl x:Name="ActiveItem" />
         </Border>
     </Grid>

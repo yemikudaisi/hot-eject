@@ -133,10 +133,10 @@
     <value>Hide options window</value>
   </data>
   <data name="NoDriveRemoved" xml:space="preserve">
-    <value>No device was removed</value>
+    <value>No USB device connected</value>
   </data>
-  <data name="NotificationToolTip" xml:space="preserve">
-    <value>Double-click for options, right-click for menu</value>
+  <data name="TaskbarIconToolTip" xml:space="preserve">
+    <value>Double-click for options</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
@@ -158,5 +158,17 @@
   </data>
   <data name="UnableRemove" xml:space="preserve">
     <value>Unable to remove device</value>
+  </data>
+  <data name="AssignKeys" xml:space="preserve">
+    <value>Assign key</value>
+  </data>
+  <data name="AwaitingKeyAssignment" xml:space="preserve">
+    <value>Awaiting key assignment</value>
+  </data>
+  <data name="ClickAssignButton" xml:space="preserve">
+    <value>Click on the Assign Key button to begin hotkey assignment</value>
+  </data>
+  <data name="NoRemovable" xml:space="preserve">
+    <value>No removable device connected</value>
   </data>
 </root>

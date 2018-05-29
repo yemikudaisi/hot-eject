@@ -19,6 +19,10 @@ namespace Sru.Wpf.ViewModels
             _screenCollection.Add(new HotkeysPreferencesViewModel());
             SelectedScreen = _screenCollection[0];
             NotifyOfPropertyChange(() => ScreenCollection );
+            Deactivated += (s, e) =>
+            {
+                Properties.Settings.Default.Save();
+            };
         }
 
         public IList<Screen> ScreenCollection
@@ -43,5 +47,6 @@ namespace Sru.Wpf.ViewModels
                 NotifyOfPropertyChange(() => SelectedScreen);
             }
         }
+ 
     }
 }

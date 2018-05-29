@@ -79,6 +79,33 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assign key.
+        /// </summary>
+        public static string AssignKeys {
+            get {
+                return ResourceManager.GetString("AssignKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awaiting key assignment.
+        /// </summary>
+        public static string AwaitingKeyAssignment {
+            get {
+                return ResourceManager.GetString("AwaitingKeyAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click on the Assign Key button to begin hotkey assignment.
+        /// </summary>
+        public static string ClickAssignButton {
+            get {
+                return ResourceManager.GetString("ClickAssignButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
@@ -106,7 +133,7 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No device was removed.
+        ///   Looks up a localized string similar to No USB device connected.
         /// </summary>
         public static string NoDriveRemoved {
             get {
@@ -115,11 +142,11 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Double-click for options, right-click for menu.
+        ///   Looks up a localized string similar to No removable device connected.
         /// </summary>
-        public static string NotificationToolTip {
+        public static string NoRemovable {
             get {
-                return ResourceManager.GetString("NotificationToolTip", resourceCulture);
+                return ResourceManager.GetString("NoRemovable", resourceCulture);
             }
         }
         
@@ -156,6 +183,15 @@ namespace Sru.Wpf.Properties {
         public static string ShowWindow {
             get {
                 return ResourceManager.GetString("ShowWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double-click for options.
+        /// </summary>
+        public static string TaskbarIconToolTip {
+            get {
+                return ResourceManager.GetString("TaskbarIconToolTip", resourceCulture);
             }
         }
         
