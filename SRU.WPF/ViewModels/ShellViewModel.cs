@@ -29,12 +29,12 @@ namespace Sru.Wpf
         private void InitializeHotKeys()
         {
             var interopHelper = new WindowInteropHelper(new Window());
-            var _ejectHotKey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, CustomKeys.Z, interopHelper);
-            if (Properties.Settings.Default.EjectHotKey == String.Empty)
-            {
+            var _ejectHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.Z, interopHelper);
+            //if (Properties.Settings.Default.EjectHotKey == String.Empty)
+            //{
                 //_ejectHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.Z);
                 //_optionsHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
-            }
+            //}
             _ejectHotKey.HotKeyPressed += (h) =>
             {
                 Console.Beep();

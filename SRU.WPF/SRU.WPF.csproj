@@ -109,9 +109,7 @@
     <Compile Include="Controls\ToastWindow.cs" />
     <Compile Include="Infrastructure\ToastNotification.cs" />
     <Compile Include="Infrastructure\Utilities.cs" />
-    <Compile Include="Input\HotKey.cs" />
-    <Compile Include="Input\HotKeyNativeApi.cs" />
-    <Compile Include="Input\CustomKeys.cs" />
+    <Compile Include="Input\HotKeyWin32Helper.cs" />
     <Compile Include="Input\SerializableHotkey.cs" />
     <Compile Include="Localization\Language.cs" />
     <Compile Include="Localization\LocaleManager.cs" />
