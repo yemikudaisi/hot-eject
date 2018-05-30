@@ -5,8 +5,8 @@ Originally from codeproject tutorials, the library has however been tweaked and 
 
 ## Usage
 
-VolumeManager.EjectVolumeDevice("D:");
+```VolumeManager.EjectVolumeDevice("D:");```
 
 OR
 
-VolumeManager.EjectRemovableDevices();
+```VolumeManager.EjectRemovableDevices();```
