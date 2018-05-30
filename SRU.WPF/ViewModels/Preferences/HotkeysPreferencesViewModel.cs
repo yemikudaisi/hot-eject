@@ -1,29 +1,32 @@
 ﻿using Caliburn.Micro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Controls;
 using Sru.Wpf.Input;
-using Sru.Wpf.Extension;
+using Sru.Wpf.Extensions;
+using Sru.Wpf.Infrastructure;
 
 namespace Sru.Wpf.ViewModels
 {
-    public class HotkeysPreferencesViewModel : Screen
+    public class HotKeysPreferencesViewModel : Screen
     {
 
         SerializableHotkey _ejectHotKey;
-        SerializableHotkey _optionsHotkey;
+        SerializableHotkey _optionsHotKey;
 
-        public HotkeysPreferencesViewModel()
+        public HotKeysPreferencesViewModel()
         {
             DisplayName = "Hotkeys";
             if (Properties.Settings.Default.EjectHotKey == String.Empty)
             {
-                EjectHotKey = new SerializableHotkey(ModifierKeys.Control|ModifierKeys.Alt, Key.Z);
-                OptionsHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
+                _ejectHotKey = new SerializableHotkey(ModifierKeys.Control|ModifierKeys.Alt, Key.Z);
+                _optionsHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
+            }
+            else
+            {
+                var s = (string)Utilities.Settings["EjectHotKey"];
+                _ejectHotKey = s.FromBase64String<SerializableHotkey>();
+                s = (string)Utilities.Settings["OptionsHotKey"];
+                _optionsHotKey = s.FromBase64String<SerializableHotkey>();
             }
         }
 
@@ -37,7 +40,7 @@ namespace Sru.Wpf.ViewModels
             set
             {
                 _ejectHotKey = value;
-                Properties.Settings.Default.EjectHotKey = _ejectHotKey.ToBase64String();
+                Utilities.Settings["EjectHotKey"] = _ejectHotKey.ToBase64String();
                 NotifyOfPropertyChange(()=> EjectHotKey);
             }
         }
@@ -46,13 +49,13 @@ namespace Sru.Wpf.ViewModels
         {
             get
             {
-                return _optionsHotkey;
+                return _optionsHotKey;
             }
 
             set
             {
-                _optionsHotkey = value;
-                Properties.Settings.Default.OptionsHotKey= _optionsHotkey.ToBase64String(); // .ToBase64String() is an extension of objects
+                _optionsHotKey = value;
+                Utilities.Settings["OptionsHotKey"] = _optionsHotKey.ToBase64String(); // ToBase64String() is an extension of objects
                 NotifyOfPropertyChange(() => OptionsHotKey);
             }
         }

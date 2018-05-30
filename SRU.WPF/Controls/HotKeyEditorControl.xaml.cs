@@ -1,4 +1,4 @@
-﻿using Sru.Wpf.Extension;
+﻿using Sru.Wpf.Extensions;
 using Sru.Wpf.Input;
 using System;
 using System.Collections.Generic;

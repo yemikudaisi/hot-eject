@@ -52,5 +52,19 @@ namespace Sru.Wpf.Localization
                 return " locale tezt";
             }
         }
+
+        /// <summary>
+        /// Get the list of languages supported
+        /// </summary>
+        public static IList<Language> SupportedLanguages
+        {
+            get
+            {
+                var result = new List<Language>();
+                result.Add(new Language());
+                result.Add(new Language() { Lcid = "yo-NG", Description = "Yoruba (Nigeria)" });
+                return result;
+            }
+        }
     }
 }

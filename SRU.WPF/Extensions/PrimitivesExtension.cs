@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sru.Wpf.Extension
+namespace Sru.Wpf.Extensions
 {
     public static class PrimitivesExtension
     {

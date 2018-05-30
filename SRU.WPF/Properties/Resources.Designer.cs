@@ -70,6 +70,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advance.
+        /// </summary>
+        public static string Advance {
+            get {
+                return ResourceManager.GetString("Advance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to and.
         /// </summary>
         public static string And {
@@ -97,6 +106,15 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose a predefined theme.
+        /// </summary>
+        public static string ChooseTheme {
+            get {
+                return ResourceManager.GetString("ChooseTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click on the Assign Key button to begin hotkey assignment.
         /// </summary>
         public static string ClickAssignButton {
@@ -106,11 +124,47 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eject all if more than one USB device is connected.
+        /// </summary>
+        public static string EjectAllWhenMore {
+            get {
+                return ResourceManager.GetString("EjectAllWhenMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eject shortcut.
+        /// </summary>
+        public static string EjectShortcut {
+            get {
+                return ResourceManager.GetString("EjectShortcut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable verbose logging.
+        /// </summary>
+        public static string EnableLogging {
+            get {
+                return ResourceManager.GetString("EnableLogging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
             }
         }
         
@@ -129,6 +183,15 @@ namespace Sru.Wpf.Properties {
         public static string HideWindow {
             get {
                 return ResourceManager.GetString("HideWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
             }
         }
         
@@ -160,6 +223,24 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Options shortcut.
+        /// </summary>
+        public static string OptionsShortcut {
+            get {
+                return ResourceManager.GetString("OptionsShortcut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a preferred language.
+        /// </summary>
+        public static string PreferredLanguage {
+            get {
+                return ResourceManager.GetString("PreferredLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removed.
         /// </summary>
         public static string Removed {
@@ -178,6 +259,33 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run on windows startup.
+        /// </summary>
+        public static string RunOnStartup {
+            get {
+                return ResourceManager.GetString("RunOnStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shortcuts.
+        /// </summary>
+        public static string Shortcuts {
+            get {
+                return ResourceManager.GetString("Shortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global shortcuts are key combinations that enable you to safely remove your devices from any application.
+        /// </summary>
+        public static string ShortcutsDescription {
+            get {
+                return ResourceManager.GetString("ShortcutsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show options window.
         /// </summary>
         public static string ShowWindow {
@@ -187,11 +295,29 @@ namespace Sru.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Startup.
+        /// </summary>
+        public static string Startup {
+            get {
+                return ResourceManager.GetString("Startup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Double-click for options.
         /// </summary>
         public static string TaskbarIconToolTip {
             get {
                 return ResourceManager.GetString("TaskbarIconToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here you can choose a preferred theme that determines the look and for this application..
+        /// </summary>
+        public static string ThemeDescription {
+            get {
+                return ResourceManager.GetString("ThemeDescription", resourceCulture);
             }
         }
         

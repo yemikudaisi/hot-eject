@@ -100,21 +100,23 @@
     <Compile Include="Controls\OptionsWindow.cs" />
     <Compile Include="Controls\PlainWindow.cs" />
     <Compile Include="Converter\HotKeyToStringConverter.cs" />
-    <Compile Include="Extension\PrimitivesExtension.cs" />
+    <Compile Include="Extensions\PrimitivesExtension.cs" />
     <Compile Include="Infrastructure\BindingProxy.cs" />
-    <Compile Include="Infrastructure\OptionsFactory.cs" />
+    <Compile Include="Infrastructure\Settings.cs" />
     <Compile Include="Infrastructure\TaskbarIconWindowManager.cs" />
     <Compile Include="Infrastructure\ITaskbarIconShell.cs" />
     <Compile Include="Controls\TaskbarIconWindow.cs" />
     <Compile Include="Controls\ToastWindow.cs" />
     <Compile Include="Infrastructure\ToastNotification.cs" />
+    <Compile Include="Infrastructure\Utilities.cs" />
     <Compile Include="Input\HotKey.cs" />
     <Compile Include="Input\HotKeyNativeApi.cs" />
     <Compile Include="Input\CustomKeys.cs" />
     <Compile Include="Input\SerializableHotkey.cs" />
+    <Compile Include="Localization\Language.cs" />
     <Compile Include="Localization\LocaleManager.cs" />
     <Compile Include="Infrastructure\LogManager.cs" />
-    <Compile Include="ViewModels\Preferences\BasicPreferencesViewModel.cs" />
+    <Compile Include="ViewModels\Preferences\GeneralPreferencesViewModel.cs" />
     <Compile Include="ViewModels\Preferences\HotkeysPreferencesViewModel.cs" />
     <Compile Include="ViewModels\OptionsViewModel.cs" />
     <Compile Include="ViewModels\PreferencesViewModel.cs" />
@@ -175,11 +177,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Preferences\BasicPreferencesView.xaml">
+    <Page Include="Views\Preferences\GeneralPreferencesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Preferences\HotkeysPreferencesView.xaml">
+    <Page Include="Views\Preferences\HotKeysPreferencesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

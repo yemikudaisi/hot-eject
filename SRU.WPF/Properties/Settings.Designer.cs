@@ -26,12 +26,12 @@ namespace Sru.Wpf.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PreferEjectAll {
+        public bool EnableEjectAll {
             get {
-                return ((bool)(this["PreferEjectAll"]));
+                return ((bool)(this["EnableEjectAll"]));
             }
             set {
-                this["PreferEjectAll"] = value;
+                this["EnableEjectAll"] = value;
             }
         }
         
@@ -73,13 +73,37 @@ namespace Sru.Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en-us")]
-        public string Language {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PreferredLanguage {
             get {
-                return ((string)(this["Language"]));
+                return ((string)(this["PreferredLanguage"]));
             }
             set {
-                this["Language"] = value;
+                this["PreferredLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableRunOnStartup {
+            get {
+                return ((bool)(this["EnableRunOnStartup"]));
+            }
+            set {
+                this["EnableRunOnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableVerboseLogging {
+            get {
+                return ((bool)(this["EnableVerboseLogging"]));
+            }
+            set {
+                this["EnableVerboseLogging"] = value;
             }
         }
     }

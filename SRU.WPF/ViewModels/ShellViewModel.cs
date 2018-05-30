@@ -21,9 +21,6 @@ namespace Sru.Wpf
     {
         public ShellViewModel()
         {
-            OptionsFactory factory = new OptionsFactory();
-            var expected = "en-us";
-            var actual = (string)factory["Language"];
             InitializeHotKeys();
             _optionsViewModel = new OptionsViewModel();
             _windowManager = IoC.Get<IWindowManager>();
@@ -32,8 +29,13 @@ namespace Sru.Wpf
         private void InitializeHotKeys()
         {
             var interopHelper = new WindowInteropHelper(new Window());
-            var _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, CustomKeys.Z, interopHelper);
-            _hotkey.HotKeyPressed += (h) =>
+            var _ejectHotKey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, CustomKeys.Z, interopHelper);
+            if (Properties.Settings.Default.EjectHotKey == String.Empty)
+            {
+                //_ejectHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.Z);
+                //_optionsHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
+            }
+            _ejectHotKey.HotKeyPressed += (h) =>
             {
                 Console.Beep();
                 var ejected = new List<String>();

@@ -10,7 +10,7 @@ namespace Sru.Test
         [TestMethod]
         public void GetIndex_WhenTheValue_ShouldBeEqual()
         {
-            OptionsFactory factory = new OptionsFactory();
+            Settings factory = new Settings();
             var expected = "en-us";
             var actual = (string)factory["Language"];
             Assert.AreEqual(expected, actual,"Settings not equal");
@@ -19,9 +19,24 @@ namespace Sru.Test
         [TestMethod]
         public void GetIndex_WhenTheType_ShouldBeEqual()
         {
-            OptionsFactory factory = new OptionsFactory();
+            Settings factory = new Settings();
             var expected = typeof(bool);
             Assert.AreEqual(expected, factory["PreferEjectAll"].GetType(), "settings not same type");
+        }
+
+        [TestMethod]
+        public void WhenPropertyDoesNotExist_ShouldThrowArgumentOutOfRangeException()
+        {
+            var dummy = "DummyProperty";
+            try
+            {
+                Settings factory = new Settings();
+                var val = factory[dummy];
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                StringAssert.Contains(e.Message, dummy);
+            }
         }
     }
 }

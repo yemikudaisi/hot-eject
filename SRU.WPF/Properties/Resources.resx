@@ -171,4 +171,46 @@
   <data name="NoRemovable" xml:space="preserve">
     <value>No removable device connected</value>
   </data>
+  <data name="Advance" xml:space="preserve">
+    <value>Advance</value>
+  </data>
+  <data name="ChooseTheme" xml:space="preserve">
+    <value>Choose a predefined theme</value>
+  </data>
+  <data name="EjectAllWhenMore" xml:space="preserve">
+    <value>Eject all if more than one USB device is connected</value>
+  </data>
+  <data name="EjectShortcut" xml:space="preserve">
+    <value>Eject shortcut</value>
+  </data>
+  <data name="EnableLogging" xml:space="preserve">
+    <value>Enable verbose logging</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="OptionsShortcut" xml:space="preserve">
+    <value>Options shortcut</value>
+  </data>
+  <data name="PreferredLanguage" xml:space="preserve">
+    <value>Select a preferred language</value>
+  </data>
+  <data name="RunOnStartup" xml:space="preserve">
+    <value>Run on windows startup</value>
+  </data>
+  <data name="Shortcuts" xml:space="preserve">
+    <value>Shortcuts</value>
+  </data>
+  <data name="ShortcutsDescription" xml:space="preserve">
+    <value>Global shortcuts are key combinations that enable you to safely remove your devices from any application</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Startup</value>
+  </data>
+  <data name="ThemeDescription" xml:space="preserve">
+    <value>Here you can choose a preferred theme that determines the look and for this application.</value>
+  </data>
 </root>

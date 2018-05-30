@@ -15,13 +15,15 @@ namespace Sru.Wpf.ViewModels
         public PreferencesViewModel()
         {
             _screenCollection = new List<Screen>();
-            _screenCollection.Add(new BasicPreferencesViewModel());
-            _screenCollection.Add(new HotkeysPreferencesViewModel());
+            _screenCollection.Add(new GeneralPreferencesViewModel());
+            _screenCollection.Add(new HotKeysPreferencesViewModel());
             SelectedScreen = _screenCollection[0];
             NotifyOfPropertyChange(() => ScreenCollection );
             Deactivated += (s, e) =>
             {
                 Properties.Settings.Default.Save();
+                //var temp = Properties.Settings.Default;
+                //var x = 1 + 1;
             };
         }
 
