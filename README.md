@@ -1,25 +1,29 @@
-# SRU (short for safely remove USB)
+# Hot Eject
 ## Overview
-SRU Utility software that allows user to assign hotkeys (e.g Ctrl + Alt + Z) for use in safely removing USB drives. It was inspired by the majority of people I see around clicking on Ctrl + Alt when attempting to remove USB. I sincerely don't know where the got idea came from. This is me trying to help.
+Hot Eject is a Utility software that allows user to assign hotkeys (e.g Ctrl + Alt + Z) for use in safely ejecting USB drives. It was inspired by the majority of windows users I see clicking on Ctrl + Alt in an attempt to safely eject a USB (that doesn't work out-of-the-box people, use this) . This is me trying to help.
 
-##Screenshots
+## Screenshots
 
 ![No removable device toast notification for hotkeys](images/no-device-toast.png)
 ![Device removal toast notification for hotkeys](images/volume-removed-toast.png)
 ![Options window activated on taskbar icon double click](images/options-window.png)
 ![Options windows menu](images/options-window-context-menu.png)
 
-## System Requirements (running SRU)
+## System Requirements (running Hot Eject)
  - Windows Vista or higher.
  - [.NET 4.5](http://www.microsoft.com/en-au/download/details.aspx?id=30653)
  
+  ## Features
+ - Assign hot key for ejection of all drive or a single drive (Ctrl + Alt + Z by default).
+ - Configurable hot key to show options panel (Ctrl + Alt + O by default).
+ - Change user preferences
+ - Localization (Only english and yoruba at the moment)
+ 
  ## Todos
  - Show locking process when file in USB is being used.
- - Configurable hot key (globally and for each drive..not sure how to go about it yet) for (uses Ctrl + Alt + Z for now).
- - Confgure autorun app on device added or removed (handy for backup and sync tools)
+ - Confgure autorun app on devices added or removed (handy for backup and sync tools)
  - Add command line support
  - Reconnect a device without removing and re-adding
- - Implement options UI
  - Think of more todos.
  
  
@@ -30,12 +34,13 @@ SRU Utility software that allows user to assign hotkeys (e.g Ctrl + Alt + Z) for
 * [Apache log4net™](https://logging.apache.org/log4net/)
 * [Eject USB disks using C#](https://www.codeproject.com/Articles/13530/Eject-USB-disks-using-C)
 
-## Reusable Librarie(s) (Part of SRU):
+## Reusable Librarie(s) (Part of Hot Eject):
 
-* [Sru.Core](https://github.com/yemikudaisi/safely-remove-usb/tree/master/Sru.Core)
+* [HotEject.Core](https://github.com/yemikudaisi/hot-eject/tree/master/src/HotEject.Core)
+* [HotEject.Core.Input](https://github.com/yemikudaisi/hot-eject/tree/master/src/HotEject.Core.Input)
 
-## SRU Contributors
+## Hot Eject Contributors
 
 * [Yemi Kudaisi](https://github.com/yemikudaisi/) (Project Founder)
 
-###### Copyright 2018 Yemi Kudaisi for the SRU. SRU is distributed under the MIT license.
+###### Copyright 2018 Yemi Kudaisi for the Hot Eject. Hot Eject is distributed under the MIT license.
