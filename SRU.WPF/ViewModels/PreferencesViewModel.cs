@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Sru.Wpf.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,7 @@ namespace Sru.Wpf.ViewModels
             Deactivated += (s, e) =>
             {
                 Properties.Settings.Default.Save();
-                //var temp = Properties.Settings.Default;
-                //var x = 1 + 1;
+                IoC.Get<IEventAggregator>().PublishOnUIThread(new PreferenceChangeEvent());
             };
         }
 

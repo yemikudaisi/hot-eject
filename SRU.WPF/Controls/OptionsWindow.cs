@@ -25,6 +25,7 @@ namespace Sru.Wpf.Controls
             ShowInTaskbar = false;
             ShowActivated = false;
             Loaded += ToastWindowLoaded;
+            Application.Current.Deactivated += (s,e) => { Close(); };
             //Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { SetLocation(); }));
         }
 

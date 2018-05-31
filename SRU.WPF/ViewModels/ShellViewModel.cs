@@ -5,102 +5,143 @@ using Sru.Wpf.ViewModels;
 using System;
 using System.ComponentModel.Composition;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Interop;
 using Hardcodet.Wpf.TaskbarNotification;
 using Sru.Core;
 using Sru.Wpf.Infrastructure;
-using Sru.Core.Usb;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Sru.Wpf.Extensions;
+using Sru.Wpf.Events;
 
 namespace Sru.Wpf
 {
     [Export(typeof(ITaskbarIconShell))]
-    public class ShellViewModel : Screen, ITaskbarIconShell
+    public class ShellViewModel : Screen, ITaskbarIconShell, IHandle<PreferenceChangeEvent>
     {
-        public ShellViewModel()
+        SerializableHotKey _ejectHotKey;
+        SerializableHotKey _optionsHotKey;
+
+        /// <summary>
+        /// Public default constructor for ShelLViewModel
+        /// </summary>
+        [ImportingConstructor]
+        public ShellViewModel(IEventAggregator eventAggregator)
         {
-            InitializeHotKeys();
+            var _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe(this);
+            _ejectHotKey = new SerializableHotKey(ApplicationsConstants.DEFAULT_HOT_KEY_MODIFIERS, ApplicationsConstants.DEFAULT_EJECT_KEY);
+            _optionsHotKey = new SerializableHotKey(ApplicationsConstants.DEFAULT_HOT_KEY_MODIFIERS, ApplicationsConstants.DEFAULT_OPTIONS_KEY);
+            RegisterHotKeys();
             _optionsViewModel = new OptionsViewModel();
             _windowManager = IoC.Get<IWindowManager>();
         }
         
-        private void InitializeHotKeys()
+        #region Event handlers
+        /// <summary>
+        /// Options hot key pressed event handler
+        /// </summary>
+        /// <param name="obj">The hotkey that was pressed</param>
+        private void OptionsHotKeyPressed(SerializableHotKey obj)
         {
-            var interopHelper = new WindowInteropHelper(new Window());
-            var _ejectHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.Z, interopHelper);
-            //if (Properties.Settings.Default.EjectHotKey == String.Empty)
-            //{
-                //_ejectHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.Z);
-                //_optionsHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
-            //}
-            _ejectHotKey.HotKeyPressed += (h) =>
-            {
-                Console.Beep();
-                var ejected = new List<String>();
-                foreach (var device in DeviceManager.ListUsbDevices())
-                {
-                    if (device.IsMounted)
-                    {
-                        //DeviceManager.EjectDrive(device);
-                        try
-                        {
-                            DeviceManager.EjectVolumeDevice(device.DriveLetters[0]);
-                            ejected.Add(device.Caption);
-                        }
-                        catch (Win32Exception e)
-                        {
-                            // possible cause, file being used by another device ?
-                            ToastNotification.Toast(Properties.Resources.UnableRemove);
-                        }
-                        
-                    }
-                }
-                var toastMessage = "";
-                if (ejected.Count < 1)
-                {
-                    toastMessage = Properties.Resources.NoDriveRemoved;
-                }
-                else if( ejected.Count == 1) {
-                    toastMessage = $"{ejected[0]} {Properties.Resources.WasRemoved}";
-                }else
-                {
-                    toastMessage = $"{Properties.Resources.Removed.ToLower()} ";
-                    for (var i = 0; i < ejected.Count; i++)
-                    {
-                        if (i == 0)
-                            toastMessage = $"{ejected[i]}";
-                        else if(i == ejected.Count - 1 && i != 0)
-                            toastMessage = $" {Properties.Resources.And} {ejected[i]}";
-                        else
-                            toastMessage = $", {ejected[i]}";
-                    }
-                }
+            NotifyHotKeyAction();
 
-                ToastNotification.Toast(toastMessage);
-            };
+            if (CanShowOptions)
+                ShowOptions();
+            else if(CanHideOptions)
+                HideOptions();
         }
 
+        /// <summary>
+        /// Eject device hot key event handler
+        /// </summary>
+        /// <param name="obj">The hotkey that was pressed</param>
+        private void EjectHotKeyPressed(SerializableHotKey obj)
+        {
+            NotifyHotKeyAction();
+            var ejected = new List<String>();
+            foreach (var device in DeviceManager.ListUsbDevices())
+            {
+                if (device.IsMounted)
+                {
+                    try
+                    {
+                        DeviceManager.EjectVolumeDevice(device.DriveLetters[0]);
+                        ejected.Add(device.Caption);
+                    }
+                    catch (Win32Exception e)
+                    {
+                        // possible cause, file being used by another device ?
+                        ToastNotification.Toast(Properties.Resources.UnableRemove);
+                    }
 
+                }
+            }
+            HandleEjectToast(ejected);
+        }
+
+        /// <summary>
+        /// Screen activate event handler
+        /// </summary>
         protected override void OnActivate()
         {
             base.OnActivate();
 
-            NotifyOfPropertyChange(() => CanShowWindow);
-            NotifyOfPropertyChange(() => CanHideWindow);
+            NotifyOfPropertyChange(() => CanShowOptions);
+            NotifyOfPropertyChange(() => CanHideOptions);
         }
 
-        public void ShowWindow()
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Show the notification tray icon options menu
+        /// </summary>
+        public void ShowOptions()
         {
             _optionsViewModel = new OptionsViewModel();
             _windowManager.ShowWindow(_optionsViewModel);
 
-            NotifyOfPropertyChange(() => CanShowWindow);
-            NotifyOfPropertyChange(() => CanHideWindow);
+            NotifyOfPropertyChange(() => CanShowOptions);
+            NotifyOfPropertyChange(() => CanHideOptions);
         }
 
-        public bool CanShowWindow
+        /// <summary>
+        /// Hide the notification tray icon options menu
+        /// </summary>
+        public void HideOptions()
+        {
+            _optionsViewModel.TryClose();
+
+            NotifyOfPropertyChange(() => CanShowOptions);
+            NotifyOfPropertyChange(() => CanHideOptions);
+        }
+
+        /// <summary>
+        /// Terminates the application execution
+        /// </summary>
+        public void ExitApplication()
+        {
+            Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Handles hot key (re)assignment event
+        /// </summary>
+        /// <param name="message">The event that occured</param>
+        public void Handle(PreferenceChangeEvent message)
+        {
+            RegisterHotKeys();
+        }
+        #endregion
+
+        #region Enabling flags
+
+        /// <summary>
+        /// Show option action guard
+        /// </summary>
+        public bool CanShowOptions
         {
             get
             {
@@ -108,22 +149,97 @@ namespace Sru.Wpf
             }
         }
 
-        public void HideWindow()
-        {
-            _optionsViewModel.TryClose();
-
-            NotifyOfPropertyChange(() => CanShowWindow);
-            NotifyOfPropertyChange(() => CanHideWindow);
-        }
-
-        public bool CanHideWindow
+        /// <summary>
+        /// Hide option action guard
+        /// </summary>
+        public bool CanHideOptions
         {
             get
             {
                 return (_optionsViewModel.IsActive);
             }
         }
+        #endregion
 
+        #region Private Helpers
+        
+        /// <summary>
+        /// Initialize the pre configured hot keys or assign a default
+        /// </summary>
+        private void RegisterHotKeys()
+        {
+            // Required for the handle arg of the native call to register hot keys
+            var interopHelper = new WindowInteropHelper(new Window());
+
+            var base64String = Properties.Settings.Default.EjectHotKey;
+            // if a previous eject hot key value has been saved in the setting assign it to _ejectHotKey
+            // and if the saved preference is not the same as the current value
+            // The latter, is necessary to avoid re-registering same hotkey
+            if (base64String.CanFromBase64String<SerializableHotKey>() && 
+                base64String.FromBase64String<SerializableHotKey>() != _ejectHotKey)
+            {
+                _ejectHotKey = base64String.FromBase64String<SerializableHotKey>();
+            }
+
+            base64String = Properties.Settings.Default.OptionsHotKey;
+            // if a previous options hot key value has been saved in the setting assign it to _optionsHotKey
+            if (base64String.CanFromBase64String<SerializableHotKey>() &&
+                base64String.FromBase64String<SerializableHotKey>() != _optionsHotKey)
+            {
+                _optionsHotKey = base64String.FromBase64String<SerializableHotKey>();
+            }
+
+
+            _optionsHotKey.Handle = interopHelper.Handle;
+            _ejectHotKey.Handle = interopHelper.Handle;
+            _optionsHotKey.Pressed += OptionsHotKeyPressed;
+            _ejectHotKey.Pressed += EjectHotKeyPressed;
+        }
+
+        /// <summary>
+        /// Show the respective toast depending on the amount of device ejected
+        /// </summary>
+        /// <param name="ejected">The labels of devices that were ejected</param>
+        private void HandleEjectToast(List<String> ejected)
+        {
+            var toastMessage = "";
+            if (ejected.Count < 1)
+            {
+                toastMessage = Properties.Resources.NoDriveRemoved;
+            }
+            else if (ejected.Count == 1)
+            {
+                toastMessage = $"{ejected[0]} {Properties.Resources.WasRemoved}";
+            }
+            else
+            {
+                toastMessage = $"{Properties.Resources.Removed.ToLower()} ";
+                for (var i = 0; i < ejected.Count; i++)
+                {
+                    if (i == 0)
+                        toastMessage = $"{ejected[i]}";
+                    else if (i == ejected.Count - 1 && i != 0)
+                        toastMessage = $" {Properties.Resources.And} {ejected[i]}";
+                    else
+                        toastMessage = $", {ejected[i]}";
+                }
+            }
+
+            ToastNotification.Toast(toastMessage);
+        }
+
+        /// <summary>
+        /// Alert user before a hot key action is carried out
+        /// </summary>
+        private void NotifyHotKeyAction()
+        {
+            Console.Beep();
+        }
+        #endregion
+
+        /// <summary>
+        /// Sets or gets the taskbar notification icon
+        /// </summary>
         public TaskbarIcon TaskbarIcon
         {
             get
@@ -134,20 +250,18 @@ namespace Sru.Wpf
             set
             {
                 _taskbarIcon = value;
-                _taskbarIcon.MouseDown += (s,e) => {
-                    ShowWindow();
+                
+                
+                _taskbarIcon.MouseUp += (s,e) => {
+                    ShowOptions();
                 };
                 _taskbarIcon.TrayMouseDoubleClick += (s, e) => {
-                    ShowWindow();
+                    ShowOptions();
                  };
                 NotifyOfPropertyChange(() => TaskbarIcon);
             }
         }
 
-        public void ExitApplication()
-        {
-            Application.Current.Shutdown();
-        }
 
         private TaskbarIcon _taskbarIcon;
         private readonly IWindowManager _windowManager;

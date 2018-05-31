@@ -13,7 +13,7 @@ namespace Sru.Wpf.Converter
     /// <summary>
     /// Converts Hotkey to string
     /// </summary>
-    [ValueConversion(typeof(SerializableHotkey), typeof(string))]
+    [ValueConversion(typeof(SerializableHotKey), typeof(string))]
     public class HotkeyToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -21,7 +21,7 @@ namespace Sru.Wpf.Converter
             if (value == null)
                 return "< not set >";
 
-            var hotkey = (SerializableHotkey)value;
+            var hotkey = (SerializableHotKey)value;
             var key = (Key)hotkey.Key;
             var modifiers = (ModifierKeys)hotkey.Modifiers;
 

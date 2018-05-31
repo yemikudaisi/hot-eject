@@ -10,27 +10,27 @@ namespace Sru.Wpf.ViewModels
     public class HotKeysPreferencesViewModel : Screen
     {
 
-        SerializableHotkey _ejectHotKey;
-        SerializableHotkey _optionsHotKey;
+        SerializableHotKey _ejectHotKey;
+        SerializableHotKey _optionsHotKey;
 
         public HotKeysPreferencesViewModel()
         {
             DisplayName = "Hotkeys";
             if (Properties.Settings.Default.EjectHotKey == String.Empty)
             {
-                _ejectHotKey = new SerializableHotkey(ModifierKeys.Control|ModifierKeys.Alt, Key.Z);
-                _optionsHotKey = new SerializableHotkey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
+                _ejectHotKey = new SerializableHotKey(ModifierKeys.Control|ModifierKeys.Alt, Key.Z);
+                _optionsHotKey = new SerializableHotKey(ModifierKeys.Control | ModifierKeys.Alt, Key.O);
             }
             else
             {
                 var s = (string)Utilities.Settings["EjectHotKey"];
-                _ejectHotKey = s.FromBase64String<SerializableHotkey>();
+                _ejectHotKey = s.FromBase64String<SerializableHotKey>();
                 s = (string)Utilities.Settings["OptionsHotKey"];
-                _optionsHotKey = s.FromBase64String<SerializableHotkey>();
+                _optionsHotKey = s.FromBase64String<SerializableHotKey>();
             }
         }
 
-        public SerializableHotkey EjectHotKey
+        public SerializableHotKey EjectHotKey
         {
             get
             {
@@ -45,7 +45,7 @@ namespace Sru.Wpf.ViewModels
             }
         }
 
-        public SerializableHotkey OptionsHotKey
+        public SerializableHotKey OptionsHotKey
         {
             get
             {

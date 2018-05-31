@@ -34,15 +34,45 @@ namespace Sru.Wpf.Extensions
         /// <summary>
         /// Converts a base 64 string back to object instance
         /// </summary>
-        /// <typeparam name="T">Type of th eobj to be returned</typeparam>
+        /// <typeparam name="T">Type of object to be returned</typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
         public static T FromBase64String<T>(this string obj)
         {
-            using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(obj)))
+            try
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                return (T)bf.Deserialize(ms);
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(obj)))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    return (T)bf.Deserialize(ms);
+                }
+            }
+            catch
+            {
+                return default(T);
+            }
+        }
+
+        /// <summary>
+        /// Check to confirm if a string can be converted from bas 64 to the specified type
+        /// </summary>
+        /// <typeparam name="T">The  desired type of object to be converted to</typeparam>
+        /// <param name="obj">The string to be checked against</param>
+        /// <returns>Boolean indicating that the convertion can be done</returns>
+        public static bool CanFromBase64String<T>(this string obj)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(obj)))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    var t = (T)bf.Deserialize(ms);
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
 

@@ -94,12 +94,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="ApplicationsConstants.cs" />
     <Compile Include="Controls\HotKeyEditorControl.xaml.cs">
       <DependentUpon>HotKeyEditorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\OptionsWindow.cs" />
     <Compile Include="Controls\PlainWindow.cs" />
     <Compile Include="Converter\HotKeyToStringConverter.cs" />
+    <Compile Include="Events\HotKeyAssignmentEvent.cs" />
+    <Compile Include="Events\HotKeyAssignmentEventType.cs" />
+    <Compile Include="Events\PreferenceChangeEvent.cs" />
     <Compile Include="Extensions\PrimitivesExtension.cs" />
     <Compile Include="Infrastructure\BindingProxy.cs" />
     <Compile Include="Infrastructure\Settings.cs" />
@@ -110,7 +114,7 @@
     <Compile Include="Infrastructure\ToastNotification.cs" />
     <Compile Include="Infrastructure\Utilities.cs" />
     <Compile Include="Input\HotKeyWin32Helper.cs" />
-    <Compile Include="Input\SerializableHotkey.cs" />
+    <Compile Include="Input\SerializableHotKey.cs" />
     <Compile Include="Localization\Language.cs" />
     <Compile Include="Localization\LocaleManager.cs" />
     <Compile Include="Infrastructure\LogManager.cs" />

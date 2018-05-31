@@ -16,8 +16,8 @@ namespace Sru.Wpf.Controls
     public partial class HotKeyEditorControl : UserControl
     {
         public static readonly DependencyProperty HotkeyProperty =
-            DependencyProperty.Register(nameof(Hotkey), typeof(SerializableHotkey), typeof(HotKeyEditorControl),
-                new FrameworkPropertyMetadata(default(SerializableHotkey), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            DependencyProperty.Register(nameof(Hotkey), typeof(SerializableHotKey), typeof(HotKeyEditorControl),
+                new FrameworkPropertyMetadata(default(SerializableHotKey), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         private static bool HasKeyChar(Key key)
         {
@@ -38,9 +38,9 @@ namespace Sru.Wpf.Controls
         /// <summary>
         /// Currently set hotkey
         /// </summary>
-        public SerializableHotkey Hotkey
+        public SerializableHotKey Hotkey
         {
-            get { return (SerializableHotkey)GetValue(HotkeyProperty); }
+            get { return (SerializableHotKey)GetValue(HotkeyProperty); }
             set { SetValue(HotkeyProperty, value); }
         }
 
@@ -89,7 +89,7 @@ namespace Sru.Wpf.Controls
                 return;
 
             // Set values
-            Hotkey = new SerializableHotkey(modifiers, key);
+            Hotkey = new SerializableHotKey(modifiers, key);
         }
     }
 }

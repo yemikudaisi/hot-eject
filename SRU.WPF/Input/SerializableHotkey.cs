@@ -29,13 +29,13 @@ namespace Sru.Wpf.Input
     /// Implementation of windows hot keys using native win32 api
     /// </summary>
     [Serializable]
-    public sealed class SerializableHotkey : IDisposable
+    public sealed class SerializableHotKey : IDisposable
     {
-        public event Action<SerializableHotkey> HotKeyPressed;
+        public event Action<SerializableHotKey> Pressed;
 
-        private readonly int _id;
         private bool _isKeyRegistered;
-        readonly IntPtr _handle;
+        [NonSerialized]
+        private IntPtr _handle;
 
         #region Public Properties
         /// <summary>
@@ -47,21 +47,37 @@ namespace Sru.Wpf.Input
         /// Gets or sets the modifier keys for the hot key
         /// </summary>
         public ModifierKeys Modifiers { get; private set; }
+
+        public IntPtr Handle
+        {
+            get
+            {
+                return _handle;
+            }
+
+            set
+            {
+                UnregisterHotKey();
+                _handle = value;
+                RegisterHotKey();
+                ComponentDispatcher.ThreadPreprocessMessage += ThreadPreprocessMessageMethod;
+            }
+        }
         #endregion
 
-        public SerializableHotkey(ModifierKeys modifierKeys, Key key)
+        public SerializableHotKey(ModifierKeys modifierKeys, Key key)
         {
             Key = key;
             Modifiers = modifierKeys;
         }
 
-        public SerializableHotkey(ModifierKeys modifierKeys, Key key, Window window)
+        public SerializableHotKey(ModifierKeys modifierKeys, Key key, Window window)
             : this(modifierKeys, key, new WindowInteropHelper(window))
         {
             Contract.Requires(window != null);
         }
 
-        public SerializableHotkey(ModifierKeys modifierKeys, Key key, WindowInteropHelper window)
+        public SerializableHotKey(ModifierKeys modifierKeys, Key key, WindowInteropHelper window)
             : this(modifierKeys, key, window.Handle)
         {
             Contract.Requires(window != null);
@@ -73,15 +89,14 @@ namespace Sru.Wpf.Input
         /// <param name="modifierKeys"></param>
         /// <param name="key"></param>
         /// <param name="windowHandle"></param>
-        public SerializableHotkey(ModifierKeys modifierKeys, Key key, IntPtr windowHandle)
+        public SerializableHotKey(ModifierKeys modifierKeys, Key key, IntPtr windowHandle)
         {
             Contract.Requires(modifierKeys != ModifierKeys.None || key != Key.None);
             Contract.Requires(windowHandle != IntPtr.Zero);
 
             Key = key;
             Modifiers = modifierKeys;
-            _id = GetHashCode();
-            _handle = windowHandle;
+            Handle = windowHandle;
             RegisterHotKey();
             ComponentDispatcher.ThreadPreprocessMessage += ThreadPreprocessMessageMethod;
         }
@@ -89,7 +104,7 @@ namespace Sru.Wpf.Input
         /// <summary>
         /// Class destructor
         /// </summary>
-        ~SerializableHotkey()
+        ~SerializableHotKey()
         {
             Dispose();
         }
@@ -101,14 +116,14 @@ namespace Sru.Wpf.Input
             if (_isKeyRegistered)
                 UnregisterHotKey();
             int i = KeyInterop.VirtualKeyFromKey(Key);
-            _isKeyRegistered = HotKeyWin32Helper.RegisterHotKey(_handle, _id, Modifiers, i);
+            _isKeyRegistered = HotKeyWin32Helper.RegisterHotKey(Handle, GetHashCode(), Modifiers, i);
             if (!_isKeyRegistered)
                 throw new ApplicationException("HotKey already in use");
         }
 
         public void UnregisterHotKey()
         {
-            _isKeyRegistered = !HotKeyWin32Helper.UnregisterHotKey(_handle, _id);
+            _isKeyRegistered = !HotKeyWin32Helper.UnregisterHotKey(Handle, GetHashCode());
         }
 
         public void Dispose()
@@ -122,7 +137,7 @@ namespace Sru.Wpf.Input
             if (!handled)
             {
                 if (msg.message == HotKeyWin32Helper.WmHotKey
-                    && (int)(msg.wParam) == _id)
+                    && (int)(msg.wParam) == GetHashCode())
                 {
                     OnHotKeyPressed();
                     handled = true;
@@ -132,8 +147,8 @@ namespace Sru.Wpf.Input
 
         private void OnHotKeyPressed()
         {
-            if (HotKeyPressed != null)
-                HotKeyPressed(this);
+            if (Pressed != null)
+                Pressed(this);
         }
 
         public override string ToString()
@@ -152,6 +167,18 @@ namespace Sru.Wpf.Input
             str.Append(Key);
 
             return str.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != this.GetType())
+                return false;
+
+            if (this.Modifiers == ((SerializableHotKey)obj).Modifiers &&
+                this.Key == ((SerializableHotKey)obj).Key)
+                return true;
+
+            return false;
         }
     }
 }
