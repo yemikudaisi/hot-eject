@@ -1,0 +1,30 @@
+﻿<controls:PlainWindow x:Class="HotEject.Wpf.Views.PreferencesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotEject.Wpf.Views"
+        xmlns:controls="clr-namespace:HotEject.Wpf.Controls"
+        mc:Ignorable="d"
+        Title="PreferencesView" Height="400" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border>
+            <ListBox MinWidth="100" Name="ScreenCollection" SelectedItem="{Binding SelectedScreen, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <TextBlock Text="{Binding DisplayName}" />
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        <Border Grid.Column="1" Padding="10">
+            <ContentControl x:Name="ActiveItem" />
+        </Border>
+    </Grid>
+</controls:PlainWindow>

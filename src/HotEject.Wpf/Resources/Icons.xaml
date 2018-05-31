@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HotEject.Wpf.Resources">
+    <Viewbox x:Key="MenuIcon" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Path Data="M0,23.600006L30.9,23.600006 30.9,32 0,32z M0,11.799988L30.9,11.799988 30.9,20.200012 0,20.200012z M0,0L30.9,0 30.9,8.3999939 0,8.3999939z"  Stretch="Uniform" Fill="White" Width="4" Height="4" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TransformGroup.Children>
+                        <RotateTransform Angle="0" />
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </TransformGroup.Children>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+    </Viewbox>
+
+    <Viewbox x:Key="UsbIcon">
+        <Grid>
+            <Path Data="M3.9000072,28.199982L3.9000072,30 11.799998,30 11.799998,28.199982z M0,7.8999939L15.6,7.8999939 15.6,32 0,32z M9.2999985,3L9.2999985,4.6999817 10.900005,4.6999817 10.900005,3z M4.900007,3L4.900007,4.6999817 6.4999969,4.6999817 6.4999969,3z M2.9999986,0L12.699991,0 12.699991,6 2.9999986,6z" Stretch="Uniform" Fill="White" Width="4" Height="4" Margin="0,0,0,0" />
+            <Path Data="M28.805753,0L31.974733,0C32.167724,0.27001924 31.208732,0.60900805 30.678737,0.9630113 22.839801,6.2050091 16.330854,13.03398 10.513902,19.745 6.9349381,16.519997 3.7629682,13.021987 0,9.9210077 0.63698797,9.253986 1.4519834,8.7079969 2.4479772,8.2830092 4.1869603,9.2220036 5.6669437,10.081988 7.7689305,11.090989 8.0639258,11.23201 10.055913,12.143997 10.22591,12.136001 10.603912,12.115982 11.617896,10.918992 12.2419,10.401994 16.76185,6.6610023 23.254806,2.4390226 28.805753,0z" 
+                  Stretch="Uniform" 
+                  Fill="#FF57D162" 
+                  Width="4" Height="4"
+                  Margin="3,0,0,0" 
+                  RenderTransformOrigin="0.5,0.5" >
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <RotateTransform Angle="0" />
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Grid>        
+    </Viewbox>
+</ResourceDictionary>
