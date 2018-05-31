@@ -4,9 +4,6 @@ using HotEject.Wpf.Localization;
 using HotEject.Wpf.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotEject.Wpf.ViewModels
 {
@@ -66,6 +63,13 @@ namespace HotEject.Wpf.ViewModels
             set
             {
                 Utilities.Settings["EnableRunOnStartup"] = value;
+                if (value)
+                {
+                    ApplicationsConstants.RUN_REGISTRY_KEY.SetValue(ApplicationsConstants.APP_NAME, System.Reflection.Assembly.GetExecutingAssembly().Location);
+                }else
+                {
+                    ApplicationsConstants.RUN_REGISTRY_KEY.DeleteValue(ApplicationsConstants.APP_NAME, false);
+                }
                 NotifyOfPropertyChange(() => EnableRunOnStartup);
             }
         }

@@ -32,9 +32,7 @@ namespace HotEject.Core.Usb
     /// A generic base class for physical devices.
     /// </summary>
     [TypeConverter(typeof(ExpandableObjectConverter))]
-#pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
     public class Device : IComparable
-#pragma warning restore S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
     {
         private readonly string _path;
         private readonly DeviceClass _deviceClass;

@@ -29,7 +29,7 @@ namespace HotEject.Core.Input
     /// Implementation of windows hot keys using native win32 api
     /// </summary>
     [Serializable]
-    public class SerializableHotKey : IDisposable
+    public class SerializableHotKey : IEquatable<SerializableHotKey> , IDisposable
     {
         public event Action<SerializableHotKey> Pressed;
 
@@ -172,14 +172,33 @@ namespace HotEject.Core.Input
 
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != this.GetType())
+            return Equals(obj as SerializableHotKey);
+        }
+
+        public bool Equals(SerializableHotKey other)
+        {
+            if (ReferenceEquals(other, null))
                 return false;
 
-            if (this.Modifiers == ((SerializableHotKey)obj).Modifiers &&
-                this.Key == ((SerializableHotKey)obj).Key)
+            if (ReferenceEquals(this, other))
                 return true;
 
-            return false;
+            return (this.Modifiers == other.Modifiers && this.Key == other.Key);
+        }
+
+        public static bool operator == (SerializableHotKey a, SerializableHotKey b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(SerializableHotKey a, SerializableHotKey b)
+        {
+            return !a.Equals(b);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
