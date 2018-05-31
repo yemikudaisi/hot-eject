@@ -15,6 +15,7 @@ namespace HotEject.Wpf.ViewModels
     {
         private IList<UsbDevice> _devices;
         private readonly PreferencesViewModel _preferencesViewModel;
+        private bool _windowIsVisible;
 
         public OptionsViewModel()
         {            
@@ -70,6 +71,20 @@ namespace HotEject.Wpf.ViewModels
             get
             {
                 return (!_preferencesViewModel.IsActive);
+            }
+        }
+
+        public bool WindowIsVisible
+        {
+            get
+            {
+                return _windowIsVisible;
+            }
+
+            set
+            {
+                _windowIsVisible = value;
+                NotifyOfPropertyChange(() => WindowIsVisible);
             }
         }
     }

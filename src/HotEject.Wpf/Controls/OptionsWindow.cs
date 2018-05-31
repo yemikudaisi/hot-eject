@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace HotEject.Wpf.Controls
 {
@@ -25,8 +20,18 @@ namespace HotEject.Wpf.Controls
             ShowInTaskbar = false;
             ShowActivated = false;
             Loaded += ToastWindowLoaded;
-            Application.Current.Deactivated += (s,e) => { Close(); };
-            //Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { SetLocation(); }));
+            Application.Current.Deactivated += ApplicationDeactivated;
+        }
+
+        private void ApplicationDeactivated(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        protected override void OnDeactivated(EventArgs e)
+        {
+            base.OnDeactivated(e);
+            Hide();
         }
 
         private void SetLocation()

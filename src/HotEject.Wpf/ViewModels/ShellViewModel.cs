@@ -100,7 +100,7 @@ namespace HotEject.Wpf
         /// </summary>
         public void ShowOptions()
         {
-            _optionsViewModel = new OptionsViewModel();
+            _optionsViewModel.WindowIsVisible = true;
             _windowManager.ShowWindow(_optionsViewModel);
 
             NotifyOfPropertyChange(() => CanShowOptions);
@@ -112,7 +112,7 @@ namespace HotEject.Wpf
         /// </summary>
         public void HideOptions()
         {
-            _optionsViewModel.TryClose();
+            _optionsViewModel.WindowIsVisible = false;
 
             NotifyOfPropertyChange(() => CanShowOptions);
             NotifyOfPropertyChange(() => CanHideOptions);
@@ -145,7 +145,7 @@ namespace HotEject.Wpf
         {
             get
             {
-                return (!_optionsViewModel.IsActive);
+                return (!_optionsViewModel.IsActive && !_optionsViewModel.WindowIsVisible);
             }
         }
 
@@ -156,7 +156,7 @@ namespace HotEject.Wpf
         {
             get
             {
-                return (_optionsViewModel.IsActive);
+                return (_optionsViewModel.IsActive && _optionsViewModel.WindowIsVisible);
             }
         }
         #endregion
@@ -191,7 +191,6 @@ namespace HotEject.Wpf
                 _optionsHotKey = base64String.FromBase64String<SerializableHotKey>();
             }
 
-
             _optionsHotKey.Handle = interopHelper.Handle;
             _ejectHotKey.Handle = interopHelper.Handle;
             _optionsHotKey.Pressed += OptionsHotKeyPressed;
@@ -199,7 +198,7 @@ namespace HotEject.Wpf
         }
 
         /// <summary>
-        /// Show the respective toast depending on the amount of device ejected
+        /// Show the respective toast based on the amount of device ejected
         /// </summary>
         /// <param name="ejected">The labels of devices that were ejected</param>
         private void HandleEjectToast(List<String> ejected)
@@ -252,8 +251,6 @@ namespace HotEject.Wpf
             set
             {
                 _taskbarIcon = value;
-                
-                
                 _taskbarIcon.MouseUp += (s,e) => {
                     ShowOptions();
                 };

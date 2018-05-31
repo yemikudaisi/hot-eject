@@ -16,7 +16,7 @@
         <tb:TaskbarIcon
             Visibility="Visible"
             Name="_taskbarIcon"
-            IconSource="pack://application:,,,/sru;component/Resources/SruIcon.ico"
+            IconSource="pack://application:,,,/hot-eject;component/Resources/SruIcon.ico"
             ToolTip="{x:Static props:Resources.TaskbarIconToolTip}"
             cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action ShowWindow]; [Event MouseDown] = [Action ShowWindow]"/>
     </Grid>

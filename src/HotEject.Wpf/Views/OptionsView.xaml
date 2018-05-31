@@ -10,24 +10,35 @@
              xmlns:props="clr-namespace:HotEject.Wpf.Properties"
              mc:Ignorable="d"
              d:DesignHeight="300" MaxWidth="250" SizeToContent="Height" >
+    <controls:OptionsWindow.Style>
+        <Style TargetType="controls:OptionsWindow">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding WindowIsVisible}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </controls:OptionsWindow.Style>
     <controls:OptionsWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="/sru;component/Themes/Generic.xaml"/>
-            <ResourceDictionary Source="/sru;component/Resources/Icons.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>        
+                <ResourceDictionary Source="/hot-eject;component/Themes/Generic.xaml"/>
+                <ResourceDictionary Source="/hot-eject;component/Resources/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </controls:OptionsWindow.Resources>
+
     <Grid >
         <Grid.Resources>
             <infrastructure:BindingProxy x:Key="proxy" Data="{Binding}" />
         </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Border  VerticalAlignment="Stretch" Background="{StaticResource Accent}">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="32"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition />
+    </Grid.RowDefinitions>
+    <Border  VerticalAlignment="Stretch" Background="{StaticResource Accent}">
             <DockPanel>
                 <Border Height="20" Child="{StaticResource UsbIcon}"/>
                 <Button 
