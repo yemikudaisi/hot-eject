@@ -29,8 +29,9 @@ namespace HotEject.Wpf.Infrastructure
                     var obj = info.GetValue(Properties.Settings.Default);
                     return obj;
                 }
-                catch (System.ComponentModel.Composition.CompositionException e)
+                catch
                 {
+                    LogManager.Logger.Error($"Property - {index}, The property does not exist");
 #pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
                     throw new ArgumentOutOfRangeException("Property", index, "The property does not exist");
 #pragma warning restore S3928 // Parameter names used into ArgumentException constructors should match an existing one 

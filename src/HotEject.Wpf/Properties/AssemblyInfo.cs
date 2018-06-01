@@ -7,13 +7,13 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Sru.Wpf")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Hot Eject")]
+[assembly: AssemblyDescription("Windows utility software that allows users eject USB devices with pre-assigned hot keys")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sru.Wpf")]
+[assembly: AssemblyCompany("Yemi Kudaisi")]
+[assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Yemi Kudaisi")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -57,3 +57,5 @@ using System.Windows;
 
 // Specify Log4Net Configuration file
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
+[assembly: NeutralResourcesLanguage("")]
+

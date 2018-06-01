@@ -19,6 +19,11 @@ namespace HotEject.Wpf
     [Export(typeof(ITaskbarIconShell))]
     public class ShellViewModel : Screen, ITaskbarIconShell, IHandle<PreferenceChangeEvent>
     {
+        private TaskbarIcon _taskbarIcon;
+
+        private readonly IWindowManager _windowManager;
+        private readonly OptionsViewModel _optionsViewModel;
+
         SerializableHotKey _ejectHotKey;
         SerializableHotKey _optionsHotKey;
 
@@ -69,8 +74,9 @@ namespace HotEject.Wpf
                         DeviceManager.EjectVolumeDevice(device.DriveLetters[0]);
                         ejected.Add(device.Caption);
                     }
-                    catch (Win32Exception e)
+                    catch
                     {
+                        LogManager.Logger.Error($"{obj.ToString()} - Hot key registration failed");
                         // possible cause, file being used by another device ?
                         ToastNotification.Toast(Properties.Resources.UnableRemove);
                     }
@@ -170,11 +176,10 @@ namespace HotEject.Wpf
         {
             // Required for the handle arg of the native call to register hot keys
             var interopHelper = new WindowInteropHelper(new Window());
-            var df = Properties.Settings.Default.EjectHotKey;
             var base64String = Properties.Settings.Default.EjectHotKey;
+
             // if a previous eject hot key value has been saved in the setting assign it to _ejectHotKey
-            // and if the saved preference is not the same as the current value
-            // The latter, is necessary to avoid re-registering same hotkey
+            // and if the saved preference is not the same as the current value, the latter, is necessary to avoid re-registering same hotkey
             if (base64String.CanFromBase64String<SerializableHotKey>() && 
                 base64String.FromBase64String<SerializableHotKey>() != _ejectHotKey)
             {
@@ -260,10 +265,5 @@ namespace HotEject.Wpf
                 NotifyOfPropertyChange(() => TaskbarIcon);
             }
         }
-
-
-        private TaskbarIcon _taskbarIcon;
-        private readonly IWindowManager _windowManager;
-        private OptionsViewModel _optionsViewModel;
     }
 }
