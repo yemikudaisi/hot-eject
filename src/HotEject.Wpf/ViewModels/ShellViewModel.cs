@@ -211,7 +211,7 @@ namespace HotEject.Wpf
             var toastMessage = "";
             if (ejected.Count < 1)
             {
-                toastMessage = Properties.Resources.NoDriveRemoved;
+                toastMessage = Properties.Resources.NoRemovable;
             }
             else if (ejected.Count == 1)
             {

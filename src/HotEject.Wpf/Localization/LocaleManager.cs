@@ -34,7 +34,7 @@ namespace HotEject.Wpf.Localization
         /// Set the the application local to the specified value
         /// </summary>
         /// <param name="locale"></param>
-        public void SetLocale(String locale)
+        public static void SetLocale(String locale)
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(locale);
         }

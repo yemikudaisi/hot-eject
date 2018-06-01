@@ -97,11 +97,11 @@ namespace HotEject.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Awaiting key assignment.
+        ///   Looks up a localized string similar to Basic.
         /// </summary>
-        public static string AwaitingKeyAssignment {
+        public static string Basic {
             get {
-                return ResourceManager.GetString("AwaitingKeyAssignment", resourceCulture);
+                return ResourceManager.GetString("Basic", resourceCulture);
             }
         }
         
@@ -111,15 +111,6 @@ namespace HotEject.Wpf.Properties {
         public static string ChooseTheme {
             get {
                 return ResourceManager.GetString("ChooseTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click on the Assign Key button to begin hotkey assignment.
-        /// </summary>
-        public static string ClickAssignButton {
-            get {
-                return ResourceManager.GetString("ClickAssignButton", resourceCulture);
             }
         }
         
@@ -160,15 +151,6 @@ namespace HotEject.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to General.
-        /// </summary>
-        public static string General {
-            get {
-                return ResourceManager.GetString("General", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string Help {
@@ -192,15 +174,6 @@ namespace HotEject.Wpf.Properties {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No USB device connected.
-        /// </summary>
-        public static string NoDriveRemoved {
-            get {
-                return ResourceManager.GetString("NoDriveRemoved", resourceCulture);
             }
         }
         

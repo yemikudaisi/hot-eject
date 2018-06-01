@@ -14,7 +14,7 @@ namespace HotEject.Wpf.ViewModels
         IList<Language> _supportedLanguages;
         public GeneralPreferencesViewModel()
         {
-            DisplayName = "Basic";
+            DisplayName = Properties.Resources.Basic;
             if ((String)Utilities.Settings["PreferredLanguage"] == "")
             {
                 SelectedLanguage = new Language(); // note that this defaults to english
@@ -38,6 +38,7 @@ namespace HotEject.Wpf.ViewModels
             {
                 _selectedLanguage = value;
                 Utilities.Settings["PreferredLanguage"] = value.ToBase64String();
+                LocaleManager.SetLocale(value.Lcid);
                 NotifyOfPropertyChange(() => SelectedLanguage);
             }
         }

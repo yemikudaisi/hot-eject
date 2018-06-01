@@ -118,90 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Exit</value>
+    <value>Ala ye</value>
   </data>
   <data name="And" xml:space="preserve">
-    <value>and</value>
+    <value>pẹlu</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Jade</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Help</value>
+    <value>Iranlọwọ</value>
   </data>
   <data name="HideWindow" xml:space="preserve">
-    <value>Hide options window</value>
+    <value>Fi aworan option pa mp</value>
   </data>
   <data name="TaskbarIconToolTip" xml:space="preserve">
-    <value>Double-click for options</value>
+    <value>Tẹ-lẹẹmeji fun awọn aṣayan</value>
   </data>
   <data name="Options" xml:space="preserve">
-    <value>Options</value>
+    <value>Asayan</value>
   </data>
   <data name="Removed" xml:space="preserve">
-    <value>Removed</value>
+    <value>Yọ</value>
   </data>
   <data name="RemoveDevice" xml:space="preserve">
-    <value>Safely remove device</value>
+    <value>Yọ ẹrọ kuro lailewu</value>
   </data>
   <data name="ShowWindow" xml:space="preserve">
     <value>Show options window</value>
   </data>
   <data name="WasRemoved" xml:space="preserve">
-    <value>was removed</value>
+    <value>ti you kurọ</value>
   </data>
   <data name="WereRemoved" xml:space="preserve">
-    <value>were removed</value>
+    <value>ti you kurọ</value>
   </data>
   <data name="UnableRemove" xml:space="preserve">
-    <value>Unable to remove device</value>
+    <value>Ko le ṣawari ẹrọ</value>
   </data>
   <data name="AssignKeys" xml:space="preserve">
-    <value>Assign key</value>
+    <value>Mu kokoro</value>
   </data>
   <data name="NoRemovable" xml:space="preserve">
-    <value>No removable device connected</value>
+    <value>Ko si USB ti o se yo</value>
   </data>
   <data name="Advance" xml:space="preserve">
-    <value>Advance</value>
+    <value>A mọ ọ se</value>
   </data>
   <data name="ChooseTheme" xml:space="preserve">
-    <value>Choose a predefined theme</value>
+    <value>Mu irawo kan</value>
   </data>
   <data name="EjectAllWhenMore" xml:space="preserve">
-    <value>Eject all if more than one USB device is connected</value>
+    <value>Kọ gbogbo rẹ yọ ti USB ba ju ọkan ọ</value>
   </data>
   <data name="EjectShortcut" xml:space="preserve">
-    <value>Eject shortcut</value>
+    <value>Kọkọkọrọ ati yo</value>
   </data>
   <data name="EnableLogging" xml:space="preserve">
     <value>Enable verbose logging</value>
   </data>
   <data name="Basic" xml:space="preserve">
-    <value>Basic</value>
+    <value>Ipilẹ</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Ede</value>
   </data>
   <data name="OptionsShortcut" xml:space="preserve">
-    <value>Options shortcut</value>
+    <value>Kọkọrọ asayan</value>
   </data>
   <data name="PreferredLanguage" xml:space="preserve">
-    <value>Select a preferred language</value>
+    <value>Ede ti o fọwọsi</value>
   </data>
   <data name="RunOnStartup" xml:space="preserve">
-    <value>Run on windows startup</value>
+    <value>bẹrẹ ti Windows ba bẹrẹ</value>
   </data>
   <data name="Shortcuts" xml:space="preserve">
-    <value>Shortcuts</value>
+    <value>Ọna afira</value>
   </data>
   <data name="ShortcutsDescription" xml:space="preserve">
-    <value>Global shortcuts are key combinations that enable you to safely remove your devices from any application</value>
+    <value>Awọn ọna abuja agbaye jẹ awọn akojọpọ bọtini ti o fun ọ laaye lati yọ awọn ẹrọ rẹ kuro lailewu lati eyikeyi ohun elo</value>
   </data>
   <data name="Startup" xml:space="preserve">
-    <value>Startup</value>
+    <value>Ibere</value>
   </data>
   <data name="ThemeDescription" xml:space="preserve">
-    <value>Here you can choose a preferred theme that determines the look and for this application.</value>
+    <value>Nibiyi o le yan akori ti o fẹran ti o ṣe ipinnu wo ati fun ohun elo yii.</value>
+  </data>
+  <data name="Preference" xml:space="preserve">
+    <value>Eto iṣẹ</value>
   </data>
 </root>

@@ -15,7 +15,7 @@ namespace HotEject.Wpf.ViewModels
 
         public HotKeysPreferencesViewModel()
         {
-            DisplayName = "Hotkeys";
+            DisplayName = Properties.Resources.Shortcuts;
             if (Properties.Settings.Default.EjectHotKey == String.Empty)
             {
                 _ejectHotKey = new SerializableHotKey(ModifierKeys.Control|ModifierKeys.Alt, Key.Z);
