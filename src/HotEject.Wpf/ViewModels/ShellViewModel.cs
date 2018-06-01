@@ -17,7 +17,7 @@ using HotEject.Wpf.Events;
 namespace HotEject.Wpf
 {
     [Export(typeof(ITaskbarIconShell))]
-    public class ShellViewModel : Screen, ITaskbarIconShell, IHandle<PreferenceChangeEvent>
+    public class ShellViewModel : AppContextMenuBaseViewModel, ITaskbarIconShell, IHandle<PreferenceChangeEvent>
     {
         private TaskbarIcon _taskbarIcon;
 
@@ -122,14 +122,6 @@ namespace HotEject.Wpf
 
             NotifyOfPropertyChange(() => CanShowOptions);
             NotifyOfPropertyChange(() => CanHideOptions);
-        }
-
-        /// <summary>
-        /// Terminates the application execution
-        /// </summary>
-        public void ExitApplication()
-        {
-            Application.Current.Shutdown();
         }
 
         /// <summary>

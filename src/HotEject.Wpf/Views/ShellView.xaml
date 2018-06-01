@@ -18,6 +18,17 @@
             Name="_taskbarIcon"
             IconSource="pack://application:,,,/hot-eject;component/Resources/SruIcon.ico"
             ToolTip="{x:Static props:Resources.TaskbarIconToolTip}"
-            cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action ShowWindow]; [Event MouseDown] = [Action ShowWindow]"/>
+            cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action ShowWindow]; [Event MouseDown] = [Action ShowWindow]">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{x:Static props:Resources.Help}" cal:Message.Attach="ShowHelp" />
+                    <MenuItem Header="{x:Static props:Resources.About}" cal:Message.Attach="ShowAbout"/>
+                    <Separator/>
+                    <MenuItem Header="{x:Static props:Resources.Preferences}" cal:Message.Attach="ShowPreferences"/>
+                    <Separator/>
+                    <MenuItem Header="{x:Static props:Resources.Exit}" cal:Message.Attach="ExitApplication"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
     </Grid>
 </infrastructure:TaskbarIconWindow>

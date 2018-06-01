@@ -11,15 +11,14 @@ using System.Windows;
 
 namespace HotEject.Wpf.ViewModels
 {
-    public class OptionsViewModel : Screen
+    public class OptionsViewModel : AppContextMenuBaseViewModel
     {
         private IList<UsbDevice> _devices;
-        private readonly PreferencesViewModel _preferencesViewModel;
         private bool _windowIsVisible;
 
         public OptionsViewModel()
-        {            
-            _preferencesViewModel = new PreferencesViewModel();
+            : base()
+        {
             ResetDeviceList();
         }
 
@@ -36,9 +35,8 @@ namespace HotEject.Wpf.ViewModels
         }
         protected override void OnActivate()
         {
-            base.OnActivate();
             ResetDeviceList();
-            NotifyOfPropertyChange(() => CanShowPreferences);
+            base.OnActivate();
         }
 
         public IList<UsbDevice> Devices
@@ -52,25 +50,6 @@ namespace HotEject.Wpf.ViewModels
             {
                 _devices = value;
                 NotifyOfPropertyChange(() => Devices);
-            }
-        }
-
-        public void ShowPreferences()
-        {
-            IoC.Get<IWindowManager>().ShowDialog(_preferencesViewModel);
-            NotifyOfPropertyChange(() => CanShowPreferences);
-        }
-
-        public void ExitApplication()
-        {
-            Application.Current.Shutdown();
-        }
-
-        public bool CanShowPreferences
-        {
-            get
-            {
-                return (!_preferencesViewModel.IsActive);
             }
         }
 

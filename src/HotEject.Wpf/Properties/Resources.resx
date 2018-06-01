@@ -204,4 +204,7 @@
   <data name="ThemeDescription" xml:space="preserve">
     <value>Here you can choose a preferred theme that determines the look and for this application.</value>
   </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
 </root>

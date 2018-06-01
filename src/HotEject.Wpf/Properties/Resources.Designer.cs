@@ -205,6 +205,15 @@ namespace HotEject.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preferences.
+        /// </summary>
+        public static string Preferences {
+            get {
+                return ResourceManager.GetString("Preferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a preferred language.
         /// </summary>
         public static string PreferredLanguage {

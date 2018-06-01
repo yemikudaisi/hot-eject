@@ -15,6 +15,7 @@ namespace HotEject.Wpf.ViewModels
 
         public PreferencesViewModel()
         {
+            DisplayName = Properties.Resources.Preferences;
             _screenCollection = new List<Screen>();
             _screenCollection.Add(new GeneralPreferencesViewModel());
             _screenCollection.Add(new HotKeysPreferencesViewModel());

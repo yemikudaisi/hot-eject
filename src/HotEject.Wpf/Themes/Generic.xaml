@@ -171,8 +171,10 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Rectangle x:Name="moveRectangle" Fill="Transparent"
-                                           Grid.Row="0" Grid.Column="0"/>
+                                <Border x:Name="moveRectangle" Background="Transparent"
+                                           Grid.Row="0" Grid.Column="0">
+                                    <TextBlock Padding="10 0 0 0" Text="{TemplateBinding Title}" />
+                                </Border>
                                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                                     <Button x:Name="minimizeButton" Style="{StaticResource WindowButtonStyle}"
                                             Content="0" />

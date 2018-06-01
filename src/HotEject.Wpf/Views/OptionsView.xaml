@@ -61,12 +61,12 @@
                             <Setter Property="ContextMenu">
                                 <Setter.Value>
                                     <ContextMenu DataContext="{Binding Data, Source={StaticResource proxy}}">
-                                        <MenuItem Header="Help" />
-                                        <MenuItem Header="About"/>
+                                        <MenuItem Header="{x:Static props:Resources.Help}" cal:Message.Attach="ShowHelp" />
+                                        <MenuItem Header="{x:Static props:Resources.About}" cal:Message.Attach="ShowAbout"/>
                                         <Separator/>
-                                        <MenuItem Header="Prefrences" cal:Message.Attach="ShowPreferences"/>
+                                        <MenuItem Header="{x:Static props:Resources.Preferences}" cal:Message.Attach="ShowPreferences"/>
                                         <Separator/>
-                                        <MenuItem Header="Exit" cal:Message.Attach="ExitApplication"/>
+                                        <MenuItem Header="{x:Static props:Resources.Exit}" cal:Message.Attach="ExitApplication"/>
                                     </ContextMenu>
                                 </Setter.Value>
                             </Setter>

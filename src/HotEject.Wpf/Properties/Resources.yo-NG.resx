@@ -204,7 +204,7 @@
   <data name="ThemeDescription" xml:space="preserve">
     <value>Nibiyi o le yan akori ti o fẹran ti o ṣe ipinnu wo ati fun ohun elo yii.</value>
   </data>
-  <data name="Preference" xml:space="preserve">
-    <value>Eto iṣẹ</value>
+  <data name="Preferences" xml:space="preserve">
+    <value>Awọn ayanfẹ</value>
   </data>
 </root>
